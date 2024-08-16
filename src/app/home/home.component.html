@@ -1,0 +1,29 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'login'">Prijavi se</div>
+      <div class="button" [routerLink]="'register'">Registruj se</div>
+    </div>
+  </header>
+  <div class="content">
+    <p>Na našoj platformi se nalazi</p>
+    <div class="fact">{{ ownerCount }} vlasnika</div>
+    <div class="fact">{{ workerCount }} dekoratora</div>
+    <div class="fact">
+      {{ contractCount }} zakazanih poslova u proteklih
+      <select [(ngModel)]="selectedTime" (change)="updateContactCount($event)">
+        <option
+          *ngFor="let availableTime of availableTimes"
+          [value]="availableTime.displayValue"
+        >
+          {{ availableTime.displayValue }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>

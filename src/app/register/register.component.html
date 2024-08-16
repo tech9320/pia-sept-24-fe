@@ -1,0 +1,53 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'/'">Početna strana</div>
+    </div>
+  </header>
+  <div class="content">
+    <input [(ngModel)]="username" type="text" placeholder="korisničko ime" />
+    <input [(ngModel)]="password" type="password" placeholder="lozinka" />
+    <input [(ngModel)]="name" type="text" placeholder="ime" />
+    <input [(ngModel)]="surname" type="text" placeholder="prezime" />
+    <div class="gender-select">
+      <div class="gender">
+        <input [(ngModel)]="gender" type="radio" name="gender" value="M" />
+        <p>Muško</p>
+      </div>
+      <div class="gender">
+        <input [(ngModel)]="gender" type="radio" name="gender" value="Z" />
+        <p>Žensko</p>
+      </div>
+    </div>
+    <input [(ngModel)]="address" type="text" placeholder="adresa" />
+    <input
+      [(ngModel)]="contactNumber"
+      type="text"
+      placeholder="kontakt telefon"
+    />
+    <input
+      [(ngModel)]="emailAddress"
+      type="email"
+      placeholder="e-mail adresa"
+    />
+    <div class="card-details">
+      <input
+        type="text"
+        placeholder="broj kartice"
+        [(ngModel)]="cardNumber"
+        (ngModelChange)="selectCardType()"
+      />
+      <img src="{{ cardTypeImagetypePath }}" alt="card type" />
+    </div>
+    <div class="profile-picture">
+      <p>Priložite profilnu sliku:</p>
+      <input (change)="onPictureUpload($event)" type="file" />
+    </div>
+    <div (click)="registerUser()" class="button">Registruj se</div>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>
