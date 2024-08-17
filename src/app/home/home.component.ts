@@ -15,6 +15,14 @@ export class HomeComponent implements OnInit {
 
   isUser: boolean = true;
 
+  workers: any[] = [];
+  companies: any[] = [];
+  displayedCompanies: any[] = [];
+  fullWorkerData: any[] = [];
+
+  likeCompanyName: string = '';
+  likeCompanyAddress: string = '';
+
   ngOnInit(): void {
     this.dataService.getWorkerCount().subscribe((result) => {
       this.workerCount = result.data;
@@ -22,6 +30,25 @@ export class HomeComponent implements OnInit {
 
     this.dataService.getOwnerCount().subscribe((result) => {
       this.ownerCount = result.data;
+    });
+
+    this.dataService.getAllWorkers().subscribe((result) => {
+      this.workers = result['data'];
+
+      this.dataService.getAllCompanies().subscribe((result) => {
+        this.companies = result['data'];
+        this.displayedCompanies = this.companies;
+
+        this.fullWorkerData = this.workers.map((worker) => {
+          const company = this.companies.find(
+            (company) => company._id == worker.company
+          );
+
+          worker.company = company;
+
+          return worker;
+        });
+      });
     });
   }
 
@@ -75,6 +102,53 @@ export class HomeComponent implements OnInit {
     sessionStorage.removeItem('user_data');
 
     this.toastr.success('Uspešno ste se odjavili');
+  }
+
+  sortDescByCompanyName() {
+    this.displayedCompanies = this.displayedCompanies.sort((a, b) =>
+      b.name.localeCompare(a.name)
+    );
+  }
+  sortAscByCompanyName() {
+    this.displayedCompanies = this.displayedCompanies.sort((a, b) =>
+      a.name.localeCompare(b.name)
+    );
+  }
+  sortDescByCompanyAddress() {
+    this.displayedCompanies = this.displayedCompanies.sort((a, b) =>
+      b.address.localeCompare(a.address)
+    );
+  }
+  sortAscByCompanyAddress() {
+    this.displayedCompanies = this.displayedCompanies.sort((a, b) =>
+      a.address.localeCompare(b.address)
+    );
+  }
+
+  searchCompanies() {
+    if (
+      this.likeCompanyAddress.length == 0 &&
+      this.likeCompanyName.length == 0
+    ) {
+      this.displayedCompanies = this.companies;
+      return;
+    }
+
+    if (this.likeCompanyName.length != 0) {
+      this.displayedCompanies = this.displayedCompanies.filter((company) =>
+        company.name.toLowerCase().includes(this.likeCompanyName.toLowerCase())
+      );
+      return;
+    }
+
+    if (this.likeCompanyAddress.length != 0) {
+      this.displayedCompanies = this.displayedCompanies.filter((company) =>
+        company.address
+          .toLowerCase()
+          .includes(this.likeCompanyAddress.toLowerCase())
+      );
+      return;
+    }
   }
 
   workerCount = 0;

@@ -117,6 +117,89 @@ header .buttons .button:active {
   outline: none;
 }
 
+.content .tables {
+  margin: 20px 0px 0px 0px;
+}
+
+.content .tables .table-container {
+  max-height: 100px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+.content .tables #companies {
+  margin: 0px 0px 20px 0px;
+}
+
+.content .tables .table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.search-parameters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-parameters input {
+  height: 24px;
+}
+
+.search-parameters input:focus {
+  outline: none;
+}
+
+.search-parameters input:first-child {
+  margin-right: 24px;
+}
+
+.search-parameters .button {
+  width: 120px;
+}
+
+.content .tables .table-container table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f1f1f1;
+  z-index: 2;
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: left;
+}
+
+.content .tables .table-container table thead .th-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content .tables .table-container table thead .sorting-options {
+  margin-right: 8px;
+}
+
+.content .tables .table-container table thead img {
+  width: 18px;
+}
+
+.content .tables .table-container table thead img:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.content .tables .table-container table thead img:active {
+  opacity: 0.9;
+}
+
+.content .tables .table-container table thead img:first-child {
+  margin-right: 12px;
+}
+
+.content .tables .table-container table tbody td {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
 footer {
   height: 50px;
 

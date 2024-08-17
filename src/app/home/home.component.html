@@ -34,6 +34,91 @@
         </option>
       </select>
     </div>
+    <div class="tables">
+      <div class="search-parameters">
+        <div class="inputs">
+          <input
+            [(ngModel)]="likeCompanyName"
+            type="text"
+            placeholder="ime firme"
+          />
+          <input
+            [(ngModel)]="likeCompanyAddress"
+            type="text"
+            placeholder="adresa firme"
+          />
+        </div>
+        <div (click)="searchCompanies()" class="button">Pretraži</div>
+      </div>
+      <div class="table-container" id="companies">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <div class="th-data">
+                  <p>Ime</p>
+                  <div class="sorting-options">
+                    <img
+                      (click)="sortDescByCompanyName()"
+                      src="../../assets/images/sort-down.png"
+                    />
+                    <img
+                      (click)="sortAscByCompanyName()"
+                      src="../../assets/images/sort-up.png"
+                    />
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div class="th-data">
+                  <p>Adresa</p>
+                  <div class="sorting-options">
+                    <img
+                      (click)="sortDescByCompanyAddress()"
+                      src="../../assets/images/sort-down.png"
+                    />
+                    <img
+                      (click)="sortAscByCompanyAddress()"
+                      src="../../assets/images/sort-up.png"
+                    />
+                  </div>
+                </div>
+              </th>
+              <th>Broj telefona</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let company of displayedCompanies">
+              <td>{{ company.name }}</td>
+              <td>{{ company.address }}</td>
+              <td>{{ company.contactNumber }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-container" id="workers">
+        <table>
+          <thead>
+            <tr>
+              <th>Ime</th>
+              <th>Adresa</th>
+              <th>Broj telefona</th>
+              <th>Email adresa</th>
+              <th>Kompanija</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let worker of fullWorkerData">
+              <td>{{ worker.name }}</td>
+              <td>{{ worker.surname }}</td>
+              <td>{{ worker.contactNumber }}</td>
+              <td>{{ worker.email }}</td>
+              <td>{{ worker.company.name }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <div *ngIf="isLoggedInOwner()" class="content">
     <div class="button" [routerLink]="'profile'">Profil</div>

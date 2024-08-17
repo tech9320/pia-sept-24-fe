@@ -8,6 +8,14 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
+  getAllCompanies() {
+    return this.http.get<any>('http://localhost:4000/company');
+  }
+
+  getAllWorkers() {
+    return this.http.get<any>('http://localhost:4000/worker');
+  }
+
   getWorkerCount(): Observable<any> {
     return this.http.get<any>('http://localhost:4000/worker/count');
   }
