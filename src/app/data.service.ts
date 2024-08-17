@@ -74,4 +74,14 @@ export class DataService {
 
     return this.http.post<any>('http://localhost:4000/owner', data);
   }
+
+  updateUserPassword(userType: string, userId: string, newPassword: string) {
+    let data = {
+      userType,
+      userId,
+      newPassword,
+    };
+
+    return this.http.put<any>('http://localhost:4000/password/update', data);
+  }
 }

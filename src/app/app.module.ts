@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { PasswordChangeComponent } from './password-change/password-change.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    PasswordChangeComponent,
   ],
   imports: [
     BrowserModule,

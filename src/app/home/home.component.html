@@ -11,7 +11,7 @@
       <div *ngIf="!isLoggedIn()" class="button" [routerLink]="'register'">
         Registruj se
       </div>
-      <div *ngIf="isLoggedIn()" class="button" [routerLink]="'login'">
+      <div *ngIf="isLoggedIn()" class="button" [routerLink]="'password-change'">
         Promeni šifru
       </div>
       <div *ngIf="isLoggedIn()" (click)="logoutUser()" class="button">
