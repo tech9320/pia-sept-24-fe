@@ -1,0 +1,22 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'/'">Početna strana</div>
+    </div>
+  </header>
+  <div class="content">
+    <p>PRIJAVA ADMINISTRATORA</p>
+    <input
+      [(ngModel)]="usernameValue"
+      type="text"
+      placeholder="korisničko ime"
+    />
+    <input [(ngModel)]="passwordValue" type="password" placeholder="lozinka" />
+    <div (click)="loginUser()" class="button">Prijavi se</div>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>

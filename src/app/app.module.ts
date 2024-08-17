@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { PasswordChangeComponent } from './password-change/password-change.component';
+import { AdminLoginComponent } from './admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { PasswordChangeComponent } from './password-change/password-change.compo
     LoginComponent,
     RegisterComponent,
     PasswordChangeComponent,
+    AdminLoginComponent,
   ],
   imports: [
     BrowserModule,
