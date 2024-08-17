@@ -19,7 +19,7 @@
       </div>
     </div>
   </header>
-  <div class="content">
+  <div *ngIf="!isLoggedIn()" class="content">
     <p>Na našoj platformi se nalazi</p>
     <div class="fact">{{ ownerCount }} vlasnika</div>
     <div class="fact">{{ workerCount }} dekoratora</div>
@@ -34,6 +34,24 @@
         </option>
       </select>
     </div>
+  </div>
+  <div *ngIf="isLoggedInOwner()" class="content">
+    <div class="button" [routerLink]="'profile'">Profil</div>
+    <div class="button">Firme</div>
+    <div class="button">Zakazivanja</div>
+    <div class="button">Održavanje</div>
+  </div>
+  <div *ngIf="isLoggedInWorker()" class="content">
+    <div class="button" [routerLink]="'profile'">Profil</div>
+    <div class="button">Zakazivanja</div>
+    <div class="button">Održavanja</div>
+    <div class="button">Statistika</div>
+  </div>
+  <div *ngIf="isLoggedInAdmin()" class="content">
+    <div class="button">Pregled zahteva</div>
+    <div class="button">Pregled prijavljenih entiteta</div>
+    <div class="button">Dodavanje novih dekoratora</div>
+    <div class="button">Dodavanje novih firmi</div>
   </div>
   <footer>Copyrighted © 2024 Vaša bašta</footer>
 </div>

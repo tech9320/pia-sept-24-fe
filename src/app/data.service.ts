@@ -88,6 +88,35 @@ export class DataService {
     return this.http.post<any>('http://localhost:4000/owner', data);
   }
 
+  updateUser(
+    name: string,
+    surname: string,
+    address: string,
+    contactNumber: string,
+    email: string,
+    photoBitecode: string,
+    cardNumber: string,
+    userType: string,
+    userId: string
+  ) {
+    let data = {
+      name: name,
+      surname: surname,
+      address: address,
+      contactNumber: contactNumber,
+      email: email,
+      photoBitecode: photoBitecode,
+      cardNumber: cardNumber,
+      userId,
+    };
+
+    if (userType == 'owner') {
+      return this.http.put<any>('http://localhost:4000/owner', data);
+    } else {
+      return this.http.put<any>('http://localhost:4000/worker', data);
+    }
+  }
+
   updateUserPassword(userType: string, userId: string, newPassword: string) {
     let data = {
       userType,

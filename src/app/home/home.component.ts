@@ -37,6 +37,39 @@ export class HomeComponent implements OnInit {
     return false;
   }
 
+  isLoggedInWorker(): boolean {
+    if (
+      sessionStorage.getItem('user_type') &&
+      sessionStorage.getItem('user_type') == 'worker'
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  isLoggedInOwner(): boolean {
+    if (
+      sessionStorage.getItem('user_type') &&
+      sessionStorage.getItem('user_type') == 'owner'
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  isLoggedInAdmin(): boolean {
+    if (
+      sessionStorage.getItem('user_type') &&
+      sessionStorage.getItem('user_type') == 'admin'
+    ) {
+      return true;
+    }
+
+    return false;
+  }
+
   logoutUser() {
     sessionStorage.removeItem('user_type');
     sessionStorage.removeItem('user_data');

@@ -6,6 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'password-change', component: PasswordChangeComponent },
   { path: 'admin', component: AdminLoginComponent },
+  { path: 'profile', component: ProfileComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

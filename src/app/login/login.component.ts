@@ -42,7 +42,7 @@ export class LoginComponent {
 
           this.toastr.success('Uspešno ste je prijavili na servis');
 
-          this.router.navigate(['/']);
+          this.router.navigate(['/profile']);
         } else {
           this.toastr.error('Došlo je do greške pri povezivanju sa serverom!');
           console.error(result.data);

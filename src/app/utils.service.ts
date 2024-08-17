@@ -29,6 +29,10 @@ export class UtilsService {
       return false;
     }
 
+    if (cardNumber.length < 15 || cardNumber.length > 16) {
+      return false;
+    }
+
     if (
       cardNumber.length == 15 &&
       (['300', '301', '302', '303'].includes(cardNumber.slice(0, 3)) ||

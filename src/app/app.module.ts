@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AdminLoginComponent } from './admin-login/admin-login.component';
     RegisterComponent,
     PasswordChangeComponent,
     AdminLoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
