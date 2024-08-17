@@ -154,4 +154,13 @@ export class DataService {
 
     return this.http.put<any>('http://localhost:4000/password/update', data);
   }
+
+  updateUserStatus(userId: string, __status__: string) {
+    let data = {
+      userId,
+      __status__,
+    };
+
+    return this.http.put<any>('http://localhost:4000/owner/status', data);
+  }
 }

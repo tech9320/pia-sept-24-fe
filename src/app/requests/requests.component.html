@@ -1,1 +1,54 @@
-<p>requests works!</p>
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'password-change'">Promeni šifru</div>
+      <div (click)="logoutUser()" class="button">Odjavi se</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="tables">
+      <div class="table-container" id="owners">
+        <table>
+          <thead>
+            <tr>
+              <th>Ime</th>
+              <th>Adresa</th>
+              <th>Broj telefona</th>
+              <th>Email adresa</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let owner of owners">
+              <td>{{ owner.name }}</td>
+              <td>{{ owner.surname }}</td>
+              <td>{{ owner.contactNumber }}</td>
+              <td>{{ owner.email }}</td>
+              <td>
+                <div class="options">
+                  <div
+                    class="button"
+                    (click)="changeUserStatus(owner, 'approved')"
+                  >
+                    odobri
+                  </div>
+                  <div
+                    class="button"
+                    (click)="changeUserStatus(owner, 'rejected')"
+                  >
+                    odbi
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>

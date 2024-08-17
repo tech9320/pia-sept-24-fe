@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { EntitiesComponent } from './entities/entities.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
+import { RequestsComponent } from './requests/requests.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'companies', component: CompaniesComponent },
   { path: 'admin/entities', component: EntitiesComponent },
   { path: 'admin/update-user', component: UpdateUserComponent },
+  { path: 'admin/request', component: RequestsComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
