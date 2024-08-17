@@ -5,8 +5,18 @@
       <p>Vaša mašta - vaša bašta</p>
     </div>
     <div class="buttons">
-      <div class="button" [routerLink]="'login'">Prijavi se</div>
-      <div class="button" [routerLink]="'register'">Registruj se</div>
+      <div *ngIf="!isLoggedIn()" class="button" [routerLink]="'login'">
+        Prijavi se
+      </div>
+      <div *ngIf="!isLoggedIn()" class="button" [routerLink]="'register'">
+        Registruj se
+      </div>
+      <div *ngIf="isLoggedIn()" class="button" [routerLink]="'login'">
+        Promeni šifru
+      </div>
+      <div *ngIf="isLoggedIn()" (click)="logoutUser()" class="button">
+        Odjavi se
+      </div>
     </div>
   </header>
   <div class="content">

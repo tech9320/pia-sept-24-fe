@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
@@ -14,6 +13,8 @@ export class HomeComponent implements OnInit {
     private dataService: DataService
   ) {}
 
+  isUser: boolean = true;
+
   ngOnInit(): void {
     this.dataService.getWorkerCount().subscribe((result) => {
       this.workerCount = result.data;
@@ -26,6 +27,21 @@ export class HomeComponent implements OnInit {
 
   showInfo(message: string) {
     this.toastr.info(message);
+  }
+
+  isLoggedIn(): boolean {
+    if (sessionStorage.getItem('user_type')) {
+      return true;
+    }
+
+    return false;
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.toastr.success('Uspešno ste se odjavili');
   }
 
   workerCount = 0;
