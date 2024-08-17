@@ -116,6 +116,34 @@ export class DataService {
     return this.http.post<any>('http://localhost:4000/owner', data);
   }
 
+  registerWorker(
+    username: string,
+    password: string,
+    name: string,
+    surname: string,
+    gender: string,
+    address: string,
+    contactNumber: string,
+    email: string,
+    photoBitecode: string,
+    selectedCompany: string
+  ) {
+    let data = {
+      username: username,
+      password: password,
+      name: name,
+      surname: surname,
+      gender: gender,
+      address: address,
+      contactNumber: contactNumber,
+      email: email,
+      photoBitecode: photoBitecode,
+      selectedCompany: selectedCompany,
+    };
+
+    return this.http.post<any>('http://localhost:4000/worker', data);
+  }
+
   updateUser(
     name: string,
     surname: string,
