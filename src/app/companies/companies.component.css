@@ -1,0 +1,213 @@
+.home {
+  height: fit-content;
+  width: 100vw;
+
+  background-color: rgb(255, 255, 243);
+}
+
+header {
+  height: 90px;
+
+  padding: 0px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: antiquewhite;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  width: 56px;
+
+  margin: 0px 12px 0px 0px;
+}
+
+header .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .buttons .button {
+  height: 32px;
+  width: 120px;
+
+  border-radius: 6px;
+  border: 2px solid rgb(100, 59, 59);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(233, 203, 183);
+
+  color: rgb(100, 59, 59);
+}
+
+header .buttons .button:first-child {
+  margin: 0px 12px 0px 0px;
+}
+
+header .buttons .button:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+header .buttons .button:active {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
+
+.content {
+  height: calc(100vh - 140px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content .button {
+  height: 32px;
+  width: 280px;
+
+  margin: 12px 0px 12px 0px;
+
+  border-radius: 6px;
+  border: 2px solid rgb(100, 59, 59);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(233, 203, 183);
+
+  color: rgb(100, 59, 59);
+}
+
+.content .button:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+.content .button:active {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
+
+.content select {
+  border: none;
+  background: none;
+
+  font-family: "Roboto";
+  font-weight: 600;
+}
+
+.content select:hover {
+  cursor: pointer;
+}
+
+.content select:focus {
+  outline: none;
+}
+
+.content .tables {
+  margin: 20px 0px 0px 0px;
+}
+
+.content .tables .table-container {
+  max-height: 100px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+}
+
+.content .tables #companies {
+  margin: 0px 0px 20px 0px;
+}
+
+.content .tables .table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.search-parameters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.search-parameters input {
+  height: 24px;
+}
+
+.search-parameters input:focus {
+  outline: none;
+}
+
+.search-parameters input:first-child {
+  margin-right: 24px;
+}
+
+.search-parameters .button {
+  width: 120px;
+}
+
+.content .tables .table-container table thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f1f1f1;
+  z-index: 2;
+  border: 1px solid #ddd;
+  padding: 4px;
+  text-align: left;
+}
+
+.content .tables .table-container table thead .th-data {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content .tables .table-container table thead .sorting-options {
+  margin-right: 8px;
+}
+
+.content .tables .table-container table thead img {
+  width: 18px;
+}
+
+.content .tables .table-container table thead img:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.content .tables .table-container table thead img:active {
+  opacity: 0.9;
+}
+
+.content .tables .table-container table thead img:first-child {
+  margin-right: 12px;
+}
+
+.content .tables .table-container table tbody td {
+  border: 1px solid #ddd;
+  padding: 4px;
+}
+
+footer {
+  height: 50px;
+
+  padding: 0px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: antiquewhite;
+}

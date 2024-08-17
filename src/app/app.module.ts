@@ -13,6 +13,10 @@ import { ToastrModule } from 'ngx-toastr';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { EntitiesComponent } from './entities/entities.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
+import { RequestsComponent } from './requests/requests.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +27,10 @@ import { ProfileComponent } from './profile/profile.component';
     PasswordChangeComponent,
     AdminLoginComponent,
     ProfileComponent,
+    CompaniesComponent,
+    EntitiesComponent,
+    UpdateUserComponent,
+    RequestsComponent,
   ],
   imports: [
     BrowserModule,

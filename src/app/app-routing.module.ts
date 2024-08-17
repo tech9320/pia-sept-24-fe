@@ -7,6 +7,9 @@ import { LoginComponent } from './login/login.component';
 import { PasswordChangeComponent } from './password-change/password-change.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { ProfileComponent } from './profile/profile.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { EntitiesComponent } from './entities/entities.component';
+import { UpdateUserComponent } from './update-user/update-user.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -15,6 +18,9 @@ const routes: Routes = [
   { path: 'password-change', component: PasswordChangeComponent },
   { path: 'admin', component: AdminLoginComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'companies', component: CompaniesComponent },
+  { path: 'admin/entities', component: EntitiesComponent },
+  { path: 'admin/update-user', component: UpdateUserComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

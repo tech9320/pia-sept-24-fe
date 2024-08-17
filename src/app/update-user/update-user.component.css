@@ -1,0 +1,199 @@
+.home {
+  height: fit-content;
+  width: 100vw;
+
+  background-color: rgb(255, 255, 243);
+}
+
+header {
+  height: 90px;
+
+  padding: 0px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: antiquewhite;
+}
+
+header .logo {
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  width: 56px;
+
+  margin: 0px 12px 0px 0px;
+}
+
+header .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+header .buttons .button {
+  height: 32px;
+  width: 120px;
+
+  border-radius: 6px;
+  border: 2px solid rgb(100, 59, 59);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(233, 203, 183);
+
+  color: rgb(100, 59, 59);
+}
+
+header .buttons .button:first-child {
+  margin: 0px 12px 0px 0px;
+}
+
+header .buttons .button:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+header .buttons .button:active {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
+
+.content {
+  height: calc(100vh - 140px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content input {
+  height: 20px;
+  width: 200px;
+}
+
+.content input:focus {
+  outline: none;
+}
+
+.content .button {
+  height: 28px;
+  width: 120px;
+
+  margin: 0px 8px 0px 0px;
+
+  border-radius: 6px;
+  border: 2px solid rgb(100, 59, 59);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: rgb(233, 203, 183);
+
+  color: rgb(100, 59, 59);
+}
+
+.content .button:hover {
+  cursor: pointer;
+  filter: brightness(0.8);
+}
+
+.content .button:active {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
+
+.content input {
+  width: 280px;
+
+  margin: 0px 0px 12px 0px;
+}
+
+.content .gender-select {
+  width: 280px;
+
+  margin: 12px 0px 12px 0px;
+
+  display: flex;
+  align-items: center;
+}
+
+.content .gender-select .gender {
+  width: 140px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content .gender-select .gender p {
+  font-size: 16px;
+}
+
+.content .gender-select .gender input {
+  width: fit-content;
+
+  margin: 0px 0px 8px 0px;
+}
+
+.content .gender-select .gender input:hover {
+  cursor: pointer;
+}
+
+.content .card-details {
+  width: 280px;
+
+  margin: 0px 0px 20px 0px;
+
+  display: flex;
+  align-items: center;
+}
+
+.content .card-details img {
+  width: 28px;
+
+  margin: 0px 0px 0px 20px;
+}
+
+.content .card-details input {
+  width: 280px;
+
+  margin: 0px 0px 0px 0px;
+}
+
+.content .profile-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content .profile-picture p {
+  margin: 0px 0px 12px 0px;
+}
+
+.content .profile-picture img {
+  width: 80px;
+}
+
+.content .profile-picture input:hover {
+  cursor: pointer;
+}
+
+footer {
+  height: 50px;
+
+  padding: 0px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: antiquewhite;
+}

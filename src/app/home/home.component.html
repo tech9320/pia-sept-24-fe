@@ -122,7 +122,7 @@
   </div>
   <div *ngIf="isLoggedInOwner()" class="content">
     <div class="button" [routerLink]="'profile'">Profil</div>
-    <div class="button">Firme</div>
+    <div class="button" [routerLink]="'companies'">Firme</div>
     <div class="button">Zakazivanja</div>
     <div class="button">Održavanje</div>
   </div>
@@ -134,7 +134,9 @@
   </div>
   <div *ngIf="isLoggedInAdmin()" class="content">
     <div class="button">Pregled zahteva</div>
-    <div class="button">Pregled prijavljenih entiteta</div>
+    <div class="button" [routerLink]="'admin/entities'">
+      Pregled prijavljenih entiteta
+    </div>
     <div class="button">Dodavanje novih dekoratora</div>
     <div class="button">Dodavanje novih firmi</div>
   </div>

@@ -1,0 +1,87 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'password-change'">Promeni šifru</div>
+      <div (click)="logoutUser()" class="button">Odjavi se</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="tables">
+      <div class="table-container" id="owners">
+        <table>
+          <thead>
+            <tr>
+              <th>Ime</th>
+              <th>Adresa</th>
+              <th>Broj telefona</th>
+              <th>Email adresa</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let owner of owners">
+              <td>{{ owner.name }}</td>
+              <td>{{ owner.surname }}</td>
+              <td>{{ owner.contactNumber }}</td>
+              <td>{{ owner.email }}</td>
+              <td class="button" (click)="updateUser(owner)">ažuriraj</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-container" id="workers">
+        <table>
+          <thead>
+            <tr>
+              <th>Ime</th>
+              <th>Adresa</th>
+              <th>Broj telefona</th>
+              <th>Email adresa</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let worker of workers">
+              <td>{{ worker.name }}</td>
+              <td>{{ worker.surname }}</td>
+              <td>{{ worker.contactNumber }}</td>
+              <td>{{ worker.email }}</td>
+              <td class="button" (click)="updateUser(worker)">ažuriraj</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-container" id="companies">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <div class="th-data">
+                  <p>Ime</p>
+                </div>
+              </th>
+              <th>
+                <div class="th-data">
+                  <p>Adresa</p>
+                </div>
+              </th>
+              <th>Broj telefona</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let company of companies">
+              <td>{{ company.name }}</td>
+              <td>{{ company.address }}</td>
+              <td>{{ company.contactNumber }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>

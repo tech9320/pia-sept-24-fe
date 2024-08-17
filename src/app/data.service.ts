@@ -8,6 +8,26 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
+  getAllOwners() {
+    return this.http.get<any>('http://localhost:4000/owner');
+  }
+
+  deactivateOwner(ownerId: string) {
+    let data = {
+      userId: ownerId,
+    };
+
+    return this.http.put<any>('http://localhost:4000/owner/deactivate', data);
+  }
+
+  deactivateWorker(workerId: string) {
+    let data = {
+      userId: workerId,
+    };
+
+    return this.http.put<any>('http://localhost:4000/worker/deactivate', data);
+  }
+
   getAllCompanies() {
     return this.http.get<any>('http://localhost:4000/company');
   }

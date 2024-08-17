@@ -24,6 +24,9 @@ export class HomeComponent implements OnInit {
   likeCompanyAddress: string = '';
 
   ngOnInit(): void {
+    sessionStorage.removeItem('worker_data');
+    sessionStorage.removeItem('owner_data');
+
     this.dataService.getWorkerCount().subscribe((result) => {
       this.workerCount = result.data;
     });

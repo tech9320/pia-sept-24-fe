@@ -1,0 +1,78 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'password-change'">Promeni šifru</div>
+      <div (click)="logoutUser()" class="button">Odjavi se</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="tables">
+      <div class="search-parameters">
+        <div class="inputs">
+          <input
+            [(ngModel)]="likeCompanyName"
+            type="text"
+            placeholder="ime firme"
+          />
+          <input
+            [(ngModel)]="likeCompanyAddress"
+            type="text"
+            placeholder="adresa firme"
+          />
+        </div>
+        <div (click)="searchCompanies()" class="button">Pretraži</div>
+      </div>
+      <div class="table-container" id="companies">
+        <table>
+          <thead>
+            <tr>
+              <th>
+                <div class="th-data">
+                  <p>Ime</p>
+                  <div class="sorting-options">
+                    <img
+                      (click)="sortDescByCompanyName()"
+                      src="../../assets/images/sort-down.png"
+                    />
+                    <img
+                      (click)="sortAscByCompanyName()"
+                      src="../../assets/images/sort-up.png"
+                    />
+                  </div>
+                </div>
+              </th>
+              <th>
+                <div class="th-data">
+                  <p>Adresa</p>
+                  <div class="sorting-options">
+                    <img
+                      (click)="sortDescByCompanyAddress()"
+                      src="../../assets/images/sort-down.png"
+                    />
+                    <img
+                      (click)="sortAscByCompanyAddress()"
+                      src="../../assets/images/sort-up.png"
+                    />
+                  </div>
+                </div>
+              </th>
+              <th>Broj telefona</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let company of displayedCompanies">
+              <td>{{ company.name }}</td>
+              <td>{{ company.address }}</td>
+              <td>{{ company.contactNumber }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>
