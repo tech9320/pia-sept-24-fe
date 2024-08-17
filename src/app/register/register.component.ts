@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { UtilsService } from '../utils.service';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent {
   constructor(
     private dataService: DataService,
     private toastr: ToastrService,
-    private utilsService: UtilsService
+    private utilsService: UtilsService,
+    private router: Router
   ) {}
 
   username: string = '';
@@ -97,12 +99,6 @@ export class RegisterComponent {
   }
 
   registerUser() {
-    this.dataService
-      .checkForUniqueUsername(this.username)
-      .subscribe((result) => {
-        console.log(result);
-      });
-
     if (
       this.username.length == 0 ||
       this.password.length == 0 ||
@@ -115,14 +111,84 @@ export class RegisterComponent {
       this.cardNumber.length == 0
     ) {
       this.toastr.error('Molim Vas popunite sva polja!');
+      return;
     }
 
     if (!this.utilsService.checkEmail(this.emailAddress)) {
       this.toastr.error('Molim Vas unesite pravilan format email adrese!');
+      return;
     }
 
-    if (this.utilsService.isCardNumberValid(this.cardNumber)) {
+    if (!this.utilsService.isCardNumberValid(this.cardNumber)) {
       this.toastr.error('Molim Vas unesite validan broj kartice!');
+      return;
     }
+
+    if (!this.utilsService.checkPassword(this.password)) {
+      this.toastr.error('Molim Vas unesite pravilan format lozinke!');
+      return;
+    }
+
+    this.dataService
+      .checkForUniqueUsername(this.username)
+      .subscribe(({ message, unique }) => {
+        if (message == 'error') {
+          this.toastr.error('Došlo je do greške pri povezivanju sa serverom');
+          console.log(unique);
+        } else {
+          if (!unique) {
+            this.toastr.error(
+              'Molim Vas unesite drugo korisničko ime! Dato je već iskorišćeno!'
+            );
+            return;
+          } else {
+            this.dataService
+              .checkForUniqueEmail(this.emailAddress)
+              .subscribe(({ message, unique }) => {
+                if (message == 'error') {
+                  this.toastr.error(
+                    'Došlo je do greške pri povezivanju sa serverom'
+                  );
+                  console.log(unique);
+                } else {
+                  if (!unique) {
+                    this.toastr.error(
+                      'Molim Vas unesite drugu email adresu! Data je već korišćena!'
+                    );
+                    return;
+                  } else {
+                    this.dataService
+                      .registerUser(
+                        this.username,
+                        this.password,
+                        this.name,
+                        this.surname,
+                        this.gender,
+                        this.address,
+                        this.contactNumber,
+                        this.emailAddress,
+                        this.pictureBitecode?.toString()!,
+                        this.cardNumber
+                      )
+                      .subscribe(({ status, message }) => {
+                        if (status == 'ok') {
+                          this.toastr.success(
+                            'Uspešno ste podneli prijavu za registraciju korisnika!'
+                          );
+
+                          this.router.navigate(['/']);
+                        } else {
+                          this.toastr.error(
+                            'Došlo je do greške pri čuvanju korisnika'
+                          );
+                          console.error(message);
+                        }
+                      });
+                  }
+                }
+              });
+          }
+        }
+      });
   }
 }

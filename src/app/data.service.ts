@@ -46,4 +46,32 @@ export class DataService {
       params: httpParams,
     });
   }
+
+  registerUser(
+    username: string,
+    password: string,
+    name: string,
+    surname: string,
+    gender: string,
+    address: string,
+    contactNumber: string,
+    email: string,
+    photoBitecode: string,
+    cardNumber: string
+  ) {
+    let data = {
+      username: username,
+      password: password,
+      name: name,
+      surname: surname,
+      gender: gender,
+      address: address,
+      contactNumber: contactNumber,
+      email: email,
+      photoBitecode: photoBitecode,
+      cardNumber: cardNumber,
+    };
+
+    return this.http.post<any>('http://localhost:4000/owner', data);
+  }
 }

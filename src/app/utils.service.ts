@@ -13,7 +13,7 @@ export class UtilsService {
 
   checkPassword(password: string): boolean {
     const regex =
-      /^(?!.*(.).*\1)(?=[a-zA-Z])(?=.*[A-Z])(?=.*[a-z].*[a-z].*[a-z])(?=.*\d)(?=.*[!@#$%^&*()_+[\]{};':"\\|,.<>\/?])[a-zA-Z\d!@#$%^&*()_+[\]{};':"\\|,.<>\/?]{6,10}$/;
+      /^(?=.*\d)(?=.*[\W_])(?=.*[A-Z])(?=(?:[^a-z]*[a-z]){3})[a-zA-Z].{5,9}$/;
 
     return regex.test(password);
   }
