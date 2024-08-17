@@ -18,6 +18,7 @@ import { EntitiesComponent } from './entities/entities.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { RequestsComponent } from './requests/requests.component';
 import { AdminDecoratorsComponent } from './admin-decorators/admin-decorators.component';
+import { CompaniesDetailsComponent } from './companies-details/companies-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AdminDecoratorsComponent } from './admin-decorators/admin-decorators.co
     UpdateUserComponent,
     RequestsComponent,
     AdminDecoratorsComponent,
+    CompaniesDetailsComponent,
   ],
   imports: [
     BrowserModule,

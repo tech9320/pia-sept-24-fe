@@ -158,7 +158,7 @@ header .buttons .button:active {
   width: 120px;
 }
 
-.content .tables .table-container table thead th {
+table thead th {
   position: sticky;
   top: 0;
   background-color: #f1f1f1;
@@ -168,34 +168,38 @@ header .buttons .button:active {
   text-align: left;
 }
 
-.content .tables .table-container table thead .th-data {
+table thead .th-data {
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.content .tables .table-container table thead .sorting-options {
+table thead .sorting-options {
   margin-right: 8px;
 }
 
-.content .tables .table-container table thead img {
+table thead img {
   width: 18px;
 }
 
-.content .tables .table-container table thead img:hover {
+table {
+  margin-top: 20px;
+}
+
+table thead img:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
-.content .tables .table-container table thead img:active {
+table thead img:active {
   opacity: 0.9;
 }
 
-.content .tables .table-container table thead img:first-child {
+table thead img:first-child {
   margin-right: 12px;
 }
 
-.content .tables .table-container table tbody td {
+table tbody td {
   border: 1px solid #ddd;
   padding: 4px;
 }

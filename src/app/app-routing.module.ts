@@ -12,6 +12,7 @@ import { EntitiesComponent } from './entities/entities.component';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { RequestsComponent } from './requests/requests.component';
 import { AdminDecoratorsComponent } from './admin-decorators/admin-decorators.component';
+import { CompaniesDetailsComponent } from './companies-details/companies-details.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'admin', component: AdminLoginComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'companies', component: CompaniesComponent },
+  { path: 'companies/details', component: CompaniesDetailsComponent },
   { path: 'admin/entities', component: EntitiesComponent },
   { path: 'admin/update-user', component: UpdateUserComponent },
   { path: 'admin/decorator', component: AdminDecoratorsComponent },

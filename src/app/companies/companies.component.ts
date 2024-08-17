@@ -88,4 +88,10 @@ export class CompaniesComponent implements OnInit {
       return;
     }
   }
+
+  checkoutCompany(company: any) {
+    sessionStorage.setItem('selected_company_data', JSON.stringify(company));
+
+    this.router.navigate(['companies/details']);
+  }
 }

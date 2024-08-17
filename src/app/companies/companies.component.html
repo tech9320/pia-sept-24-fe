@@ -5,8 +5,7 @@
       <p>Vaša mašta - vaša bašta</p>
     </div>
     <div class="buttons">
-      <div class="button" [routerLink]="'password-change'">Promeni šifru</div>
-      <div (click)="logoutUser()" class="button">Odjavi se</div>
+      <div class="button" [routerLink]="'/'">Početna strana</div>
     </div>
   </header>
   <div class="content">
@@ -65,7 +64,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let company of displayedCompanies">
-              <td>{{ company.name }}</td>
+              <td id="link" (click)="checkoutCompany(company)">
+                {{ company.name }}
+              </td>
               <td>{{ company.address }}</td>
               <td>{{ company.contactNumber }}</td>
             </tr>
