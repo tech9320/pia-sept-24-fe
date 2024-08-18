@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class CompaniesDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.companyData = JSON.parse(sessionStorage['selected_company_data']);
-
-    console.log(this.companyData);
   }
 
   companyData: any = {};

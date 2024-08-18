@@ -10,8 +10,8 @@
   </header>
   <div class="content">
     <mat-horizontal-stepper [linear]="true" #stepper>
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
+      <mat-step [stepControl]="initialFormGroup">
+        <form [formGroup]="initialFormGroup">
           <ng-template matStepLabel>Opšte informacije</ng-template>
           <div class="form-container">
             <div class="date-picker-container">
@@ -20,8 +20,8 @@
                 [matDatepicker]="picker"
                 touchUi="true"
                 formControlName="date"
+                placeholder="MM/DD/YYYY"
               />
-              <mat-hint>MM/DD/YYYY</mat-hint>
               <mat-datepicker-toggle
                 matIconSuffix
                 [for]="picker"
@@ -30,52 +30,164 @@
             </div>
             <div class="input-container">
               <p>Ukupna kvadratura:</p>
-              <input type="number" />
+              <input type="number" min="0" formControlName="gardenArea" />
             </div>
-            <div class="garden-type-select">
-              <div class="garden">
-                <input type="radio" name="garden-type" value="P" />
-                <p>Privatna bašta</p>
-              </div>
-              <div class="garden">
-                <input type="radio" name="garden-type" value="R" />
-                <p>Bašta restorana</p>
-              </div>
-            </div>
+            <mat-radio-group
+              [(ngModel)]="gardenType"
+              formControlName="gardenType"
+            >
+              <mat-radio-button value="P">Privatna bašta</mat-radio-button>
+              <mat-radio-button value="R">Bašta restorana</mat-radio-button>
+            </mat-radio-group>
           </div>
-
           <div>
-            <button mat-button matStepperNext>Sledeće</button>
+            <button mat-button matStepperNext id="stepper-button">
+              Sledeće
+            </button>
           </div>
         </form>
       </mat-step>
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
+      <mat-step *ngIf="isPrivateGarden()" [stepControl]="privateFormGroup">
+        <form [formGroup]="privateFormGroup">
+          <ng-template matStepLabel>Informacije o bašti</ng-template>
           <div class="form-container">
-            <ng-template matStepLabel>Informacije o bašti</ng-template>
-            <mat-form-field>
-              <mat-label>Last Name</mat-label>
-              <input
-                matInput
-                placeholder="Enter your last name"
-                formControlName="lastName"
-                required
-              />
-            </mat-form-field>
+            <div class="input-container">
+              <p>Kvadratura bazena:</p>
+              <input type="number" min="0" formControlName="poolArea" />
+            </div>
+            <div class="input-container">
+              <p>Kvadratura pod zelenilom:</p>
+              <input type="number" min="0" formControlName="greenArea" />
+            </div>
+            <div class="input-container">
+              <p>Kvadratura stolova i ležaljki:</p>
+              <input type="number" min="0" formControlName="furnitureArea" />
+            </div>
+            <div class="textarea-container">
+              <p>Posebni zahtevi:</p>
+              <textarea></textarea>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <th>Naziv usluge</th>
+                  <th>Cena usluge</th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let service of companyServices">
+                    <td>{{ service.serviceName }}</td>
+                    <td>{{ service.servicePrice }}</td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        (change)="selectService($event, service)"
+                        [checked]="service.selected"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-
-          <div>
-            <button mat-button matStepperPrevious>Nazad</button>
-            <button mat-button matStepperNext>Sledeće</button>
+          <div class="stepper-buttons">
+            <button mat-button matStepperPrevious id="stepper-button">
+              Nazad
+            </button>
+            <button mat-button matStepperNext id="stepper-button">
+              Sledeće
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step *ngIf="!isPrivateGarden()" [stepControl]="restaurantFormGroup">
+        <form [formGroup]="restaurantFormGroup">
+          <ng-template matStepLabel>Informacije o bašti</ng-template>
+          <div class="form-container">
+            <div class="input-container">
+              <p>Kvadratura fontane:</p>
+              <input type="number" min="0" formControlName="fountainArea" />
+            </div>
+            <div class="input-container">
+              <p>Kvadratura pod zelenilom:</p>
+              <input type="number" min="0" formControlName="greenArea" />
+            </div>
+            <div class="input-container">
+              <p>Broj stolova i stolica:</p>
+              <input
+                type="number"
+                min="0"
+                step="1"
+                formControlName="furnitureNumber"
+              />
+            </div>
+            <div class="textarea-container">
+              <p>Posebni zahtevi:</p>
+              <textarea></textarea>
+            </div>
+            <div class="table-container">
+              <table>
+                <thead>
+                  <th>Naziv usluge</th>
+                  <th>Cena usluge</th>
+                  <th></th>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let service of companyServices">
+                    <td>{{ service.serviceName }}</td>
+                    <td>{{ service.servicePrice }}</td>
+                    <td>
+                      <input
+                        type="checkbox"
+                        (change)="selectService($event, service)"
+                        [checked]="service.selected"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="stepper-buttons">
+            <button mat-button matStepperPrevious id="stepper-button">
+              Nazad
+            </button>
+            <button mat-button matStepperNext id="stepper-button">
+              Sledeće
+            </button>
           </div>
         </form>
       </mat-step>
       <mat-step>
+        <ng-template matStepLabel>Mapa bašte</ng-template>
+        <div class="form-container" id="map-container">
+          <textarea id="map-input" [(ngModel)]="gardenMapJSON"></textarea>
+          <div class="buttons">
+            <div class="button" (click)="loadGardenMap()">Učitaj mapu</div>
+            <div class="button" (click)="clearGardenMap()">Očisti mapu</div>
+          </div>
+          <canvas id="gardenMap"></canvas>
+          <div class="stepper-buttons">
+            <button mat-button matStepperPrevious id="stepper-button">
+              Nazad
+            </button>
+            <button mat-button matStepperNext id="stepper-button">
+              Sledeće
+            </button>
+          </div>
+        </div>
+      </mat-step>
+      <mat-step>
         <ng-template matStepLabel>Zakazivanje</ng-template>
-        <p>You are now done.</p>
-        <div>
-          <button mat-button matStepperPrevious>Nazad</button>
-          <button mat-button (click)="stepper.reset()">Resetuj formu</button>
+        <div class="stepper-buttons">
+          <button mat-button matStepperPrevious id="stepper-button">
+            Nazad
+          </button>
+          <button mat-button (click)="stepper.reset()" id="stepper-button">
+            Resetuj formu</button
+          ><button mat-button (click)="sendRequest()" id="stepper-button">
+            Pošalji zahtev
+          </button>
         </div>
       </mat-step>
     </mat-horizontal-stepper>

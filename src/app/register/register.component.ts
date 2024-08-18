@@ -134,7 +134,6 @@ export class RegisterComponent {
       .subscribe(({ message, unique }) => {
         if (message == 'error') {
           this.toastr.error('Došlo je do greške pri povezivanju sa serverom');
-          console.log(unique);
         } else {
           if (!unique) {
             this.toastr.error(
@@ -149,7 +148,6 @@ export class RegisterComponent {
                   this.toastr.error(
                     'Došlo je do greške pri povezivanju sa serverom'
                   );
-                  console.log(unique);
                 } else {
                   if (!unique) {
                     this.toastr.error(

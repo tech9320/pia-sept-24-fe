@@ -113,7 +113,6 @@ export class AdminDecoratorsComponent implements OnInit {
       .subscribe(({ message, unique }) => {
         if (message == 'error') {
           this.toastr.error('Došlo je do greške pri povezivanju sa serverom');
-          console.log(unique);
         } else {
           if (!unique) {
             this.toastr.error(
@@ -128,7 +127,6 @@ export class AdminDecoratorsComponent implements OnInit {
                   this.toastr.error(
                     'Došlo je do greške pri povezivanju sa serverom'
                   );
-                  console.log(unique);
                 } else {
                   if (!unique) {
                     this.toastr.error(

@@ -1,0 +1,124 @@
+{
+  "objects": [
+    {
+      "type": "rect",
+      "px": 10,
+      "py": 10,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 10,
+      "py": 45,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 10,
+      "py": 80,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 10,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 45,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 80,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 115,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 150,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 185,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 220,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 255,
+      "py": 115,
+      "w": 30,
+      "h": 30,
+      "bgColor": "green"
+    },
+    {
+      "type": "rect",
+      "px": 45,
+      "py": 10,
+      "w": 170,
+      "h": 100,
+      "bgColor": "blue"
+    },
+    {
+      "type": "rect",
+      "px": 220,
+      "py": 80,
+      "w": 65,
+      "h": 30,
+      "bgColor": "grey"
+    },
+    {
+      "type": "circl",
+      "id": "ID4",
+      "x": 270,
+      "y": 60,
+      "radius": 15,
+      "bgColor": "brown"
+    },
+    {
+      "type": "rect",
+      "px": 220,
+      "py": 10,
+      "w": 65,
+      "h": 30,
+      "bgColor": "grey"
+    }
+  ]
+}

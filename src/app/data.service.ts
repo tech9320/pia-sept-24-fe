@@ -61,8 +61,6 @@ export class DataService {
     httpParams = httpParams.append('username', username);
     httpParams = httpParams.append('password', password);
 
-    console.log(httpParams);
-
     return this.http.get<any>('http://localhost:4000/login/admin', {
       params: httpParams,
     });

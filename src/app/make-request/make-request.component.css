@@ -121,17 +121,25 @@ header .buttons .button:active {
   margin: 20px 0px 0px 0px;
 }
 
-.content .tables .table-container {
-  max-height: 100px;
+.table-container {
+  margin-top: 20px;
+
+  max-height: 80px;
   overflow-y: auto;
   border: 1px solid #ddd;
+}
+
+#map-input {
+  width: 100%;
+
+  height: 120px;
 }
 
 .content .tables #companies {
   margin: 0px 0px 20px 0px;
 }
 
-.content .tables .table-container table {
+.table-container table {
   width: 100%;
   border-collapse: collapse;
 }
@@ -182,10 +190,6 @@ table thead img {
   width: 18px;
 }
 
-table {
-  margin-top: 20px;
-}
-
 table thead img:hover {
   cursor: pointer;
   opacity: 0.7;
@@ -224,11 +228,50 @@ form {
   align-items: center;
 }
 
+.textarea-container {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.textarea-container p {
+  margin-bottom: 10px;
+}
+
+.textarea-container textarea {
+  width: 100%;
+  height: 50px;
+}
+
 .form-container {
-  margin-top: 20px;
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 20px;
+}
+
+#stepper-button {
+  border: 2px #3f51b5 solid;
+  border-radius: 20px;
+  background-color: #3f51b5;
+
+  color: white;
 }
 
 .garden-type-select {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.stepper-buttons {
+  width: 100%;
+
   display: flex;
   align-items: center;
   justify-content: space-evenly;
@@ -237,6 +280,9 @@ form {
 .input-container {
   display: flex;
   align-items: center;
+  align-items: center;
+  justify-content: space-between;
+  width: 390px;
 }
 
 .input-container input {
@@ -246,6 +292,12 @@ form {
 .garden {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-picker-container {
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -260,4 +312,33 @@ footer {
   justify-content: center;
 
   background-color: antiquewhite;
+}
+
+#map-input {
+  height: 100px;
+  width: 80%;
+}
+
+#gardenMap {
+  height: 200px;
+  width: 80%;
+
+  border: 2px solid black;
+}
+
+.buttons-map {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.buttons-map .button {
+  width: 100px;
+}
+
+#map-container {
+  width: 100%;
+  height: fit-content;
+  overflow: auto;
 }

@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MakeRequestComponent } from './make-request/make-request.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
