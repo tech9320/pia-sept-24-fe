@@ -13,6 +13,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { RequestsComponent } from './requests/requests.component';
 import { AdminDecoratorsComponent } from './admin-decorators/admin-decorators.component';
 import { CompaniesDetailsComponent } from './companies-details/companies-details.component';
+import { MakeRequestComponent } from './make-request/make-request.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'companies', component: CompaniesComponent },
   { path: 'companies/details', component: CompaniesDetailsComponent },
+  { path: 'companies/details/make-request', component: MakeRequestComponent },
   { path: 'admin/entities', component: EntitiesComponent },
   { path: 'admin/update-user', component: UpdateUserComponent },
   { path: 'admin/decorator', component: AdminDecoratorsComponent },

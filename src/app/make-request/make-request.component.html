@@ -1,0 +1,84 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'/'">Početna strana</div>
+    </div>
+  </header>
+  <div class="content">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Opšte informacije</ng-template>
+          <div class="form-container">
+            <div class="date-picker-container">
+              <input
+                matInput
+                [matDatepicker]="picker"
+                touchUi="true"
+                formControlName="date"
+              />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </div>
+            <div class="input-container">
+              <p>Ukupna kvadratura:</p>
+              <input type="number" />
+            </div>
+            <div class="garden-type-select">
+              <div class="garden">
+                <input type="radio" name="garden-type" value="P" />
+                <p>Privatna bašta</p>
+              </div>
+              <div class="garden">
+                <input type="radio" name="garden-type" value="R" />
+                <p>Bašta restorana</p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext>Sledeće</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <div class="form-container">
+            <ng-template matStepLabel>Informacije o bašti</ng-template>
+            <mat-form-field>
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                placeholder="Enter your last name"
+                formControlName="lastName"
+                required
+              />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperPrevious>Nazad</button>
+            <button mat-button matStepperNext>Sledeće</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Zakazivanje</ng-template>
+        <p>You are now done.</p>
+        <div>
+          <button mat-button matStepperPrevious>Nazad</button>
+          <button mat-button (click)="stepper.reset()">Resetuj formu</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>

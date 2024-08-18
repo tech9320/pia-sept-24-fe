@@ -19,6 +19,13 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { RequestsComponent } from './requests/requests.component';
 import { AdminDecoratorsComponent } from './admin-decorators/admin-decorators.component';
 import { CompaniesDetailsComponent } from './companies-details/companies-details.component';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MakeRequestComponent } from './make-request/make-request.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -35,6 +42,7 @@ import { CompaniesDetailsComponent } from './companies-details/companies-details
     RequestsComponent,
     AdminDecoratorsComponent,
     CompaniesDetailsComponent,
+    MakeRequestComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +56,12 @@ import { CompaniesDetailsComponent } from './companies-details/companies-details
       preventDuplicates: true,
     }),
     HttpClientModule,
+    ReactiveFormsModule,
+    MatStepperModule,
+    MatInputModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
