@@ -8,6 +8,20 @@ import { Observable } from 'rxjs';
 export class DataService {
   constructor(private http: HttpClient) {}
 
+  getAvailabilityOfWorkers(companyId: string, date: Date) {
+    let httpParams = new HttpParams();
+
+    httpParams = httpParams.append('companyId', companyId);
+    httpParams = httpParams.append('date', date.toDateString());
+
+    return this.http.get<any>(
+      'http://localhost:4000/company/worker-availability',
+      {
+        params: httpParams,
+      }
+    );
+  }
+
   getAllOwners() {
     return this.http.get<any>('http://localhost:4000/owner');
   }
@@ -140,6 +154,40 @@ export class DataService {
     };
 
     return this.http.post<any>('http://localhost:4000/worker', data);
+  }
+
+  sendRequest(
+    ownerId: string,
+    companyId: string,
+    gardenType: string,
+    gardenArea: number,
+    greenArea: number,
+    selectedServices: any,
+    createdAt: Date,
+    requestCompletedAt: Date,
+    lastMaintenanceAt: Date,
+    poolArea?: number,
+    fountainArea?: number,
+    furnitureArea?: number,
+    furnitureNumber?: number
+  ) {
+    let data = {
+      ownerId: ownerId,
+      companyId: companyId,
+      gardenType: gardenType,
+      gardenArea: gardenArea,
+      greenArea: greenArea,
+      poolArea: poolArea,
+      fountainArea: fountainArea,
+      furnitureArea: furnitureArea,
+      furnitureNumber: furnitureNumber,
+      selectedServices: selectedServices,
+      createdAt: createdAt,
+      requestCompletedAt: requestCompletedAt,
+      lastMaintenanceAt: lastMaintenanceAt,
+    };
+
+    return this.http.post<any>('http://localhost:4000/request', data);
   }
 
   updateUser(

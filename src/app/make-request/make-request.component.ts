@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-make-request',
@@ -14,6 +16,7 @@ export class MakeRequestComponent {
 
   gardenType = '';
   companyData = JSON.parse(sessionStorage.getItem('selected_company_data')!);
+  ownerData = JSON.parse(sessionStorage.getItem('user_data')!);
 
   companyServices = this.companyData['services'];
   selectedServices: any[] = [];
@@ -24,7 +27,12 @@ export class MakeRequestComponent {
   private canvas: HTMLCanvasElement | undefined;
   private ctx: CanvasRenderingContext2D | null = null;
 
-  constructor(private _formBuilder: FormBuilder, private toast: ToastrService) {
+  constructor(
+    private _formBuilder: FormBuilder,
+    private toast: ToastrService,
+    private dataService: DataService,
+    private router: Router
+  ) {
     this.initialFormGroup = this._formBuilder.group({
       date: ['', Validators.required],
       gardenArea: ['', Validators.required],
@@ -124,8 +132,6 @@ export class MakeRequestComponent {
       return;
     }
 
-    // Check if company has available workers
-
     if (this.gardenType === 'P') {
       const furnitureArea = this.privateFormGroup.get('furnitureArea')?.value;
       const poolArea = this.privateFormGroup.get('poolArea')?.value;
@@ -144,5 +150,86 @@ export class MakeRequestComponent {
         return;
       }
     }
+
+    this.dataService
+      .getAvailabilityOfWorkers(this.companyData._id, date)
+      .subscribe((result) => {
+        const isAnyWorkerAvailable = result['data'];
+
+        if (!isAnyWorkerAvailable) {
+          this.toast.error(
+            'Trenutno nema radnika za dati termin! Izaberite drugi termin'
+          );
+        } else {
+          const greenArea = this.privateFormGroup.get('greenArea')?.value;
+
+          if (this.gardenType == 'P') {
+            const furnitureArea =
+              this.privateFormGroup.get('furnitureArea')?.value;
+            const poolArea = this.privateFormGroup.get('poolArea')?.value;
+
+            this.dataService
+              .sendRequest(
+                this.ownerData._id,
+                this.companyData._id,
+                this.gardenType,
+                gardenArea,
+                greenArea,
+                this.selectService,
+                new Date(),
+                date,
+                date,
+                poolArea,
+                undefined,
+                furnitureArea,
+                undefined
+              )
+              .subscribe((result) => {
+                if (result['status'] == 'ok') {
+                  this.toast.success(
+                    'Uspešno ste poslali zahtev za dekorisanje bašte'
+                  );
+                  this.router.navigate(['/']);
+                } else {
+                  this.toast.error('Došlo je do greške pri čuvanju zahteva');
+                  console.error(result['message']);
+                }
+              });
+          } else {
+            const fountainArea =
+              this.restaurantFormGroup.get('fountainArea')?.value;
+            const furnitureNumber =
+              this.privateFormGroup.get('furnitureNumber')?.value;
+
+            this.dataService
+              .sendRequest(
+                this.ownerData._id,
+                this.companyData._id,
+                this.gardenType,
+                gardenArea,
+                greenArea,
+                this.selectService,
+                new Date(),
+                date,
+                date,
+                undefined,
+                fountainArea,
+                undefined,
+                furnitureNumber
+              )
+              .subscribe((result) => {
+                if (result['status'] == 'ok') {
+                  this.toast.success(
+                    'Uspešno ste poslali zahtev za dekorisanje bašte'
+                  );
+                  this.router.navigate(['/']);
+                } else {
+                  this.toast.error('Došlo je do greške pri čuvanju zahteva');
+                  console.error(result['message']);
+                }
+              });
+          }
+        }
+      });
   }
 }
