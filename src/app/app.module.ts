@@ -27,6 +27,7 @@ import { MakeRequestComponent } from './make-request/make-request.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
+import { AllRequestsComponent } from './all-requests/all-requests.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { MatRadioModule } from '@angular/material/radio';
     AdminDecoratorsComponent,
     CompaniesDetailsComponent,
     MakeRequestComponent,
+    AllRequestsComponent,
   ],
   imports: [
     BrowserModule,

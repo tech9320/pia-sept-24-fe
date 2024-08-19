@@ -190,6 +190,10 @@ export class DataService {
     return this.http.post<any>('http://localhost:4000/request', data);
   }
 
+  getAllRequests() {
+    return this.http.get<any>('http://localhost:4000/request');
+  }
+
   updateUser(
     name: string,
     surname: string,

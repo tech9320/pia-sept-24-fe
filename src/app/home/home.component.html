@@ -123,7 +123,7 @@
   <div *ngIf="isLoggedInOwner()" class="content">
     <div class="button" [routerLink]="'profile'">Profil</div>
     <div class="button" [routerLink]="'companies'">Firme</div>
-    <div class="button">Zakazivanja</div>
+    <div class="button" [routerLink]="'requests'">Zakazivanja</div>
     <div class="button">Održavanje</div>
   </div>
   <div *ngIf="isLoggedInWorker()" class="content">

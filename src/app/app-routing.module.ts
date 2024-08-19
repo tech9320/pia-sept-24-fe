@@ -14,6 +14,7 @@ import { RequestsComponent } from './requests/requests.component';
 import { AdminDecoratorsComponent } from './admin-decorators/admin-decorators.component';
 import { CompaniesDetailsComponent } from './companies-details/companies-details.component';
 import { MakeRequestComponent } from './make-request/make-request.component';
+import { AllRequestsComponent } from './all-requests/all-requests.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'companies', component: CompaniesComponent },
   { path: 'companies/details', component: CompaniesDetailsComponent },
   { path: 'companies/details/make-request', component: MakeRequestComponent },
+  { path: 'requests', component: AllRequestsComponent },
   { path: 'admin/entities', component: EntitiesComponent },
   { path: 'admin/update-user', component: UpdateUserComponent },
   { path: 'admin/decorator', component: AdminDecoratorsComponent },
