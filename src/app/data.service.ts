@@ -162,10 +162,10 @@ export class DataService {
     gardenType: string,
     gardenArea: number,
     greenArea: number,
-    selectedServices: any,
+    selectedServices: any[],
     createdAt: Date,
     requestCompletedAt: Date,
-    lastMaintenanceAt: Date,
+    lastMaintenanceAt: Date | undefined,
     poolArea?: number,
     fountainArea?: number,
     furnitureArea?: number,
@@ -185,6 +185,7 @@ export class DataService {
       createdAt: createdAt,
       requestCompletedAt: requestCompletedAt,
       lastMaintenanceAt: lastMaintenanceAt,
+      __status__: 'waiting',
     };
 
     return this.http.post<any>('http://localhost:4000/request', data);
@@ -240,5 +241,19 @@ export class DataService {
     };
 
     return this.http.put<any>('http://localhost:4000/owner/status', data);
+  }
+
+  updateGardenRequestStatus(
+    requestId: string,
+    workerId: string,
+    __status__: string
+  ) {
+    let data = {
+      requestId,
+      workerId,
+      __status__,
+    };
+
+    return this.http.put<any>('http://localhost:4000/request/status', data);
   }
 }

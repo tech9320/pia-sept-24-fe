@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, untracked } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./make-request.component.css'],
 })
 export class MakeRequestComponent {
+  today = new Date();
+
   initialFormGroup: FormGroup = new FormGroup({});
   privateFormGroup: FormGroup = new FormGroup({});
   restaurantFormGroup: FormGroup = new FormGroup({});
@@ -175,10 +177,10 @@ export class MakeRequestComponent {
                 this.gardenType,
                 gardenArea,
                 greenArea,
-                this.selectService,
+                this.selectedServices,
                 new Date(),
                 date,
-                date,
+                undefined,
                 poolArea,
                 undefined,
                 furnitureArea,
@@ -208,7 +210,7 @@ export class MakeRequestComponent {
                 this.gardenType,
                 gardenArea,
                 greenArea,
-                this.selectService,
+                this.selectedServices,
                 new Date(),
                 date,
                 date,

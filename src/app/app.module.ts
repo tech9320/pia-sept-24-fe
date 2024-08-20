@@ -28,6 +28,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { AllRequestsComponent } from './all-requests/all-requests.component';
+import { WorkerRequestsComponent } from './worker-requests/worker-requests.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AllRequestsComponent } from './all-requests/all-requests.component';
     CompaniesDetailsComponent,
     MakeRequestComponent,
     AllRequestsComponent,
+    WorkerRequestsComponent,
   ],
   imports: [
     BrowserModule,

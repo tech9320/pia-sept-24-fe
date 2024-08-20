@@ -14,10 +14,7 @@ export class AllRequestsComponent implements OnInit {
 
   displayedRequests: any[] = [];
 
-  constructor(
-    private toastr: ToastrService,
-    private dataService: DataService
-  ) {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
     this.dataService.getAllCompanies().subscribe((result) => {
@@ -28,6 +25,15 @@ export class AllRequestsComponent implements OnInit {
 
         this.dataService.getAllRequests().subscribe((result) => {
           this.requests = result['data'];
+
+          console.log(result['data']);
+
+          this.requests = this.requests.filter(
+            (request) =>
+              request.__status__ === 'waiting' ||
+              (request.__status__ === 'approved' &&
+                new Date() < new Date(request.requestCompletedAt))
+          );
 
           this.displayedRequests = this.requests.map((request) => {
             const company = this.companies.find(
@@ -52,12 +58,24 @@ export class AllRequestsComponent implements OnInit {
               request.requestCompletedAt
             ).toLocaleDateString('en-GB');
 
+            request.createdAt = new Date(request.createdAt).toLocaleDateString(
+              'en-GB'
+            );
+
             return request;
           });
-
-          console.log(this.displayedRequests);
         });
       });
     });
+  }
+
+  getWorks(request: any) {
+    let str: string = '';
+
+    for (let service of request.selectedServices) {
+      str += `${service.serviceName}, `;
+    }
+
+    return str.slice(0, -2);
   }
 }

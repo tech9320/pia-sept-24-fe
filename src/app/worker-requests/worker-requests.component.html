@@ -18,15 +18,35 @@
           <th>Datum kreiranja</th>
           <th>Datum radova</th>
           <th>Radovi</th>
+          <th colspan="2"></th>
         </thead>
         <tbody>
-          <tr *ngFor="let request of displayedRequests">
+          <tr *ngFor="let request of displayedRequests; let i = index">
             <td>{{ request.companyId.name }}</td>
             <td>{{ request.gardenArea }}</td>
             <td>{{ request.greenArea }}</td>
             <td>{{ request.createdAt }}</td>
             <td>{{ request.requestCompletedAt }}</td>
             <td>{{ getWorks(request) }}</td>
+            <td><textarea #textareaRef></textarea></td>
+            <td>
+              <div class="buttons-final">
+                <div
+                  class="button"
+                  id="decision"
+                  (click)="approveRequest(request)"
+                >
+                  Potvrdi
+                </div>
+                <div
+                  class="button"
+                  id="decision"
+                  (click)="rejectRequest(textareaRef, request)"
+                >
+                  Odbi
+                </div>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
