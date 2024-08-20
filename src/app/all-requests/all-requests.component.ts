@@ -14,6 +14,8 @@ export class AllRequestsComponent implements OnInit {
 
   displayedRequests: any[] = [];
 
+  userData = JSON.parse(sessionStorage.getItem('user_data')!);
+
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
@@ -26,13 +28,12 @@ export class AllRequestsComponent implements OnInit {
         this.dataService.getAllRequests().subscribe((result) => {
           this.requests = result['data'];
 
-          console.log(result['data']);
-
           this.requests = this.requests.filter(
             (request) =>
               request.__status__ === 'waiting' ||
               (request.__status__ === 'approved' &&
-                new Date() < new Date(request.requestCompletedAt))
+                new Date() < new Date(request.requestCompletedAt) &&
+                request.requestId === this.userData['_id'])
           );
 
           this.displayedRequests = this.requests.map((request) => {

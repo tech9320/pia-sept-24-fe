@@ -163,12 +163,11 @@ export class MakeRequestComponent {
             'Trenutno nema radnika za dati termin! Izaberite drugi termin'
           );
         } else {
-          const greenArea = this.privateFormGroup.get('greenArea')?.value;
-
           if (this.gardenType == 'P') {
             const furnitureArea =
               this.privateFormGroup.get('furnitureArea')?.value;
             const poolArea = this.privateFormGroup.get('poolArea')?.value;
+            const greenArea = this.privateFormGroup.get('greenArea')?.value;
 
             this.dataService
               .sendRequest(
@@ -201,7 +200,8 @@ export class MakeRequestComponent {
             const fountainArea =
               this.restaurantFormGroup.get('fountainArea')?.value;
             const furnitureNumber =
-              this.privateFormGroup.get('furnitureNumber')?.value;
+              this.restaurantFormGroup.get('furnitureNumber')?.value;
+            const greenArea = this.restaurantFormGroup.get('greenArea')?.value;
 
             this.dataService
               .sendRequest(

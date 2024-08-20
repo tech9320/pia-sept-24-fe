@@ -1,0 +1,63 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'/'">Početna strana</div>
+    </div>
+  </header>
+  <div class="content">
+    <div class="table-container">
+      <table>
+        <thead>
+          <th>Firma izvršitelj</th>
+          <th>Veličina zelene površine</th>
+          <th>Veličina bazena/fontane</th>
+          <th>Datum radova</th>
+          <th>Datum održavanja</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let request of displayedRequests">
+            <td>{{ request.companyId.name }}</td>
+            <td>{{ request.greenArea }}</td>
+            <td>{{ getWaterArea(request) }}</td>
+            <td>{{ request.requestCompletedAt }}</td>
+            <td>{{ request.requestCompletedAt }}</td>
+            <td>
+              <div
+                *ngIf="isValidForMaintanence(request)"
+                class="button"
+                id="btn"
+                (click)="requestMaintenance(request)"
+              >
+                Zatraži održavanje
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    <br />
+    <div class="table-container">
+      <table>
+        <thead>
+          <th>Firma izvršitelj</th>
+          <th>Veličina zelene površine</th>
+          <th>Veličina bazena/fontane</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let mintanence of awaitingMintanences">
+            <td>{{ mintanence.companyId.name }}</td>
+            <td>{{ mintanence.requestId.greenArea }}</td>
+            <td>{{ getWaterArea(mintanence.requestId) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>

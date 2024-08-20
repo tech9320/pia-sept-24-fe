@@ -29,6 +29,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatRadioModule } from '@angular/material/radio';
 import { AllRequestsComponent } from './all-requests/all-requests.component';
 import { WorkerRequestsComponent } from './worker-requests/worker-requests.component';
+import { MaintenancesComponent } from './maintenances/maintenances.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { WorkerRequestsComponent } from './worker-requests/worker-requests.compo
     MakeRequestComponent,
     AllRequestsComponent,
     WorkerRequestsComponent,
+    MaintenancesComponent,
   ],
   imports: [
     BrowserModule,
