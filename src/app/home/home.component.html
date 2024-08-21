@@ -130,7 +130,7 @@
     <div class="button" [routerLink]="'profile'">Profil</div>
     <div class="button" [routerLink]="'worker/requests'">Zakazivanja</div>
     <div class="button" [routerLink]="'worker/maintenance'">Održavanja</div>
-    <div class="button">Statistika</div>
+    <div class="button" [routerLink]="'worker/statistics'">Statistika</div>
   </div>
   <div *ngIf="isLoggedInAdmin()" class="content">
     <div class="button" [routerLink]="'admin/request'">Pregled zahteva</div>

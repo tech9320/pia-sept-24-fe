@@ -31,6 +31,8 @@ import { AllRequestsComponent } from './all-requests/all-requests.component';
 import { WorkerRequestsComponent } from './worker-requests/worker-requests.component';
 import { MaintenancesComponent } from './maintenances/maintenances.component';
 import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintenance.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { ChartModule } from 'angular-highcharts';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintena
     WorkerRequestsComponent,
     MaintenancesComponent,
     WorkerMaintenanceComponent,
+    StatisticsComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,6 +75,7 @@ import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintena
     MatDatepickerModule,
     MatNativeDateModule,
     MatRadioModule,
+    ChartModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
