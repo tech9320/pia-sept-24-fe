@@ -134,8 +134,6 @@ export class MaintenancesComponent {
   }
 
   requestMaintenance(request: any) {
-    console.log(request);
-
     this.dataService
       .requestMaintenance(request._id, request.companyId._id, 'waiting')
       .subscribe((result) => {

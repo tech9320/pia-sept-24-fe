@@ -1,0 +1,267 @@
+<div class="home">
+  <header>
+    <div class="logo">
+      <img src="../../assets/images/logo.png" alt="Logo" />
+      <p>Vaša mašta - vaša bašta</p>
+    </div>
+    <div class="buttons">
+      <div class="button" [routerLink]="'/'">Početna strana</div>
+    </div>
+  </header>
+  <div class="content">
+    <mat-horizontal-stepper [linear]="true" #stepper>
+      <mat-step [stepControl]="companyFormGroup">
+        <form [formGroup]="companyFormGroup" style="margin-top: 20px">
+          <ng-template matStepLabel>Informacije o firmi</ng-template>
+          <div class="form-container">
+            <div class="input-container">
+              <p>Ime:</p>
+              <input
+                type="text"
+                formControlName="companyName"
+                [(ngModel)]="companyName"
+              />
+            </div>
+            <div class="input-container">
+              <p>Adresa:</p>
+              <input
+                type="text"
+                formControlName="companyAddress"
+                [(ngModel)]="companyAddress"
+              />
+            </div>
+            <div class="input-container">
+              <p>Nazivi servisa i cene:</p>
+              <input
+                type="text"
+                formControlName="companyServices"
+                [(ngModel)]="companyServices"
+                placeholder="{'services': [{'Pranje prozora', 120}, ...]}"
+              />
+            </div>
+            <div class="input-container">
+              <p>Broj telefona:</p>
+              <input
+                type="text"
+                formControlName="companyNumber"
+                [(ngModel)]="companyNumber"
+                placeholder="+381 60 213 212 1234"
+              />
+            </div>
+            <div class="input-container">
+              <p>Lokacija na mapi:</p>
+              <input
+                type="text"
+                formControlName="companyLocation"
+                [(ngModel)]="companyLocation"
+                placeholder="'coordinates': {x: 12.2, y: 21.0}"
+              />
+            </div>
+            <div class="date-picker-container">
+              <input
+                matInput
+                [matDatepicker]="vacationStartPicker"
+                touchUi="true"
+                formControlName="vacationStart"
+                placeholder="MM/DD/YYYY (početak)"
+                [min]="today"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="vacationStartPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #vacationStartPicker></mat-datepicker>
+            </div>
+            <div class="date-picker-container">
+              <input
+                matInput
+                [matDatepicker]="vacationEndPicker"
+                touchUi="true"
+                formControlName="vacationEnd"
+                placeholder="MM/DD/YYYY (kraj)"
+                [min]="today"
+              />
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="vacationEndPicker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #vacationEndPicker></mat-datepicker>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperNext id="stepper-button">
+              Sledeće
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="firstWorkerFormGroup">
+        <form [formGroup]="firstWorkerFormGroup" style="margin-top: 20px">
+          <ng-template matStepLabel>Informacije o prvom zaposlenom</ng-template>
+          <div class="form-container">
+            <div class="input-container">
+              <p>Korisnično ime:</p>
+              <input
+                type="text"
+                formControlName="firstWorkerUsername"
+                [(ngModel)]="firstWorkerUsername"
+              />
+            </div>
+            <div class="input-container">
+              <p>Lozinka:</p>
+              <input
+                type="password"
+                formControlName="firstWorkerPassword"
+                [(ngModel)]="firstWorkerPassword"
+              />
+            </div>
+            <div class="input-container">
+              <p>Ime:</p>
+              <input
+                type="text"
+                formControlName="firstWorkerName"
+                [(ngModel)]="firstWorkerName"
+              />
+            </div>
+            <div class="input-container">
+              <p>Prezime:</p>
+              <input
+                type="text"
+                formControlName="firstWorkerSurname"
+                [(ngModel)]="firstWorkerSurname"
+              />
+            </div>
+            <mat-radio-group
+              formControlName="firstWorkerGender"
+              [(ngModel)]="firstWorkerGender"
+            >
+              <mat-radio-button value="M">Muško</mat-radio-button>
+              <mat-radio-button value="Z">Žensko</mat-radio-button>
+            </mat-radio-group>
+            <div class="input-container">
+              <p>Adresa:</p>
+              <input
+                type="text"
+                formControlName="firstWorkerAddress"
+                [(ngModel)]="firstWorkerAddress"
+              />
+            </div>
+            <div class="input-container">
+              <p>Kontakt telefon:</p>
+              <input
+                type="text"
+                formControlName="firstWorkerPhoneNumber"
+                [(ngModel)]="firstWorkerPhoneNumber"
+              />
+            </div>
+            <div class="input-container">
+              <p>Email adresa:</p>
+              <input
+                type="text"
+                formControlName="firstWorkerEmailAddress"
+                [(ngModel)]="firstWorkerEmailAddress"
+              />
+            </div>
+            <div class="profile-picture">
+              <p>Priložite profilnu sliku:</p>
+              <input (change)="onPictureUpload($event, 0)" type="file" />
+            </div>
+          </div>
+          <div class="stepper-buttons">
+            <button mat-button matStepperPrevious id="stepper-button">
+              Nazad
+            </button>
+            <button mat-button matStepperNext id="stepper-button">
+              Sledeće
+            </button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondWorkerFormGroup">
+        <form [formGroup]="secondWorkerFormGroup" style="margin-top: 20px">
+          <ng-template matStepLabel>Informacije o prvom zaposlenom</ng-template>
+          <div class="form-container">
+            <div class="input-container">
+              <p>Korisnično ime:</p>
+              <input
+                type="text"
+                formControlName="secondWorkerUsername"
+                [(ngModel)]="secondWorkerUsername"
+              />
+            </div>
+            <div class="input-container">
+              <p>Lozinka:</p>
+              <input
+                type="password"
+                formControlName="secondWorkerPassword"
+                [(ngModel)]="secondWorkerPassword"
+              />
+            </div>
+            <div class="input-container">
+              <p>Ime:</p>
+              <input
+                type="text"
+                formControlName="secondWorkerName"
+                [(ngModel)]="secondWorkerName"
+              />
+            </div>
+            <div class="input-container">
+              <p>Prezime:</p>
+              <input
+                type="text"
+                formControlName="secondWorkerSurname"
+                [(ngModel)]="secondWorkerSurname"
+              />
+            </div>
+            <mat-radio-group
+              formControlName="secondWorkerGender"
+              [(ngModel)]="secondWorkerSurname"
+            >
+              <mat-radio-button value="M">Muško</mat-radio-button>
+              <mat-radio-button value="Z">Žensko</mat-radio-button>
+            </mat-radio-group>
+            <div class="input-container">
+              <p>Adresa:</p>
+              <input
+                type="text"
+                formControlName="secondWorkerAddress"
+                [(ngModel)]="secondWorkerAddress"
+              />
+            </div>
+            <div class="input-container">
+              <p>Kontakt telefon:</p>
+              <input
+                type="text"
+                formControlName="secondWorkerPhoneNumber"
+                [(ngModel)]="secondWorkerPhoneNumber"
+              />
+            </div>
+            <div class="input-container">
+              <p>Email adresa:</p>
+              <input
+                type="text"
+                formControlName="secondWorkerEmailAddress"
+                [(ngModel)]="secondWorkerEmailAddress"
+              />
+            </div>
+            <div class="profile-picture">
+              <p>Priložite profilnu sliku:</p>
+              <input (change)="onPictureUpload($event, 0)" type="file" />
+            </div>
+          </div>
+          <div class="stepper-buttons">
+            <button mat-button matStepperPrevious id="stepper-button">
+              Nazad
+            </button>
+            <button mat-button (click)="stepper.reset()" id="stepper-button">
+              Resetuj formu</button
+            ><button mat-button (click)="saveCompany()" id="stepper-button">
+              Pošalji zahtev
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-horizontal-stepper>
+  </div>
+  <footer>Copyrighted © 2024 Vaša bašta</footer>
+</div>

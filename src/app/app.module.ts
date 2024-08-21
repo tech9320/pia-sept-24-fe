@@ -33,6 +33,7 @@ import { MaintenancesComponent } from './maintenances/maintenances.component';
 import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintenance.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ChartModule } from 'angular-highcharts';
+import { AdminCompanyComponent } from './admin-company/admin-company.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { ChartModule } from 'angular-highcharts';
     MaintenancesComponent,
     WorkerMaintenanceComponent,
     StatisticsComponent,
+    AdminCompanyComponent,
   ],
   imports: [
     BrowserModule,

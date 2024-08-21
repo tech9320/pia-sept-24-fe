@@ -19,6 +19,7 @@ import { WorkerRequestsComponent } from './worker-requests/worker-requests.compo
 import { MaintenancesComponent } from './maintenances/maintenances.component';
 import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintenance.component';
 import { StatisticsComponent } from './statistics/statistics.component';
+import { AdminCompanyComponent } from './admin-company/admin-company.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'admin/entities', component: EntitiesComponent },
   { path: 'admin/update-user', component: UpdateUserComponent },
   { path: 'admin/decorator', component: AdminDecoratorsComponent },
+  { path: 'admin/company', component: AdminCompanyComponent },
   { path: 'admin/request', component: RequestsComponent },
   { path: 'worker/requests', component: WorkerRequestsComponent },
   { path: 'worker/maintenance', component: WorkerMaintenanceComponent },

@@ -277,4 +277,28 @@ export class DataService {
 
     return this.http.put<any>('http://localhost:4000/maintenance', data);
   }
+
+  registerCompany(
+    name: string,
+    address: string,
+    services: any,
+    contactNumber: string,
+    mapCoordinates: any,
+    vacationStart: any,
+    vacationEnd: any
+  ) {
+    let data = {
+      name,
+      address,
+      services,
+      contactNumber,
+      mapCoordinates,
+      vacationPeriod: {
+        start: vacationStart,
+        end: vacationEnd,
+      },
+    };
+
+    return this.http.post<any>('http://localhost:4000/company', data);
+  }
 }

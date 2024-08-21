@@ -99,8 +99,6 @@ export class WorkerMaintenanceComponent implements OnInit {
       return;
     }
 
-    console.log(mintanence);
-
     this.dataService
       .updateMaintenance(
         mintanence.requestId._id,

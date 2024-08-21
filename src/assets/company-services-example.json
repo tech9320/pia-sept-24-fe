@@ -1,0 +1,8 @@
+{
+  "services": [
+    { "serviceName": "Pranje stakla", "servicePrice": 2000 },
+    { "serviceName": "Pranje bazena", "servicePrice": 3000 },
+    { "serviceName": "Menjanje filtera", "servicePrice": 2500 },
+    { "serviceName": "Skraćivanje žbunja", "servicePrice": 5000 }
+  ]
+}
