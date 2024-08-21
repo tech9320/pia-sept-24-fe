@@ -30,6 +30,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { AllRequestsComponent } from './all-requests/all-requests.component';
 import { WorkerRequestsComponent } from './worker-requests/worker-requests.component';
 import { MaintenancesComponent } from './maintenances/maintenances.component';
+import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintenance.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MaintenancesComponent } from './maintenances/maintenances.component';
     AllRequestsComponent,
     WorkerRequestsComponent,
     MaintenancesComponent,
+    WorkerMaintenanceComponent,
   ],
   imports: [
     BrowserModule,

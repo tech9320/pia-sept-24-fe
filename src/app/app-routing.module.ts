@@ -17,6 +17,7 @@ import { MakeRequestComponent } from './make-request/make-request.component';
 import { AllRequestsComponent } from './all-requests/all-requests.component';
 import { WorkerRequestsComponent } from './worker-requests/worker-requests.component';
 import { MaintenancesComponent } from './maintenances/maintenances.component';
+import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintenance.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'admin/decorator', component: AdminDecoratorsComponent },
   { path: 'admin/request', component: RequestsComponent },
   { path: 'worker/requests', component: WorkerRequestsComponent },
+  { path: 'worker/maintenance', component: WorkerMaintenanceComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 

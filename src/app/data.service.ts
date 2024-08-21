@@ -265,4 +265,16 @@ export class DataService {
     const data = { requestId, companyId, __status__ };
     return this.http.post<any>('http://localhost:4000/maintenance', data);
   }
+
+  updateMaintenance(
+    requestId: string,
+    maintenanceId: string,
+    workerId: string,
+    __status__: string,
+    date: Date
+  ) {
+    let data = { requestId, maintenanceId, workerId, __status__, date };
+
+    return this.http.put<any>('http://localhost:4000/maintenance', data);
+  }
 }

@@ -129,7 +129,7 @@
   <div *ngIf="isLoggedInWorker()" class="content">
     <div class="button" [routerLink]="'profile'">Profil</div>
     <div class="button" [routerLink]="'worker/requests'">Zakazivanja</div>
-    <div class="button">Održavanja</div>
+    <div class="button" [routerLink]="'worker/maintenance'">Održavanja</div>
     <div class="button">Statistika</div>
   </div>
   <div *ngIf="isLoggedInAdmin()" class="content">
