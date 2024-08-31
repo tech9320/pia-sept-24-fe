@@ -130,11 +130,13 @@ export class MakeRequestComponent {
       return;
     }
 
-    const date = this.initialFormGroup.get('date')?.value;
+    let date = new Date(this.initialFormGroup.get('date')?.value);
     const gardenArea = this.initialFormGroup.get('gardenArea')?.value;
 
-    const vacationStart = this.companyData.vacationPeriod.start;
-    const vacationEnd = this.companyData.vacationPeriod.end;
+    const vacationStart = new Date(this.companyData.vacationPeriod.start);
+    const vacationEnd = new Date(this.companyData.vacationPeriod.end);
+
+    date.setFullYear(vacationStart.getFullYear());
 
     if (date >= vacationStart && date <= vacationEnd) {
       this.toast.error(
