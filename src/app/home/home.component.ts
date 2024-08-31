@@ -9,6 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
+  workerCount = 0;
+  ownerCount = 0;
+  gardenCount = 0;
+
   constructor(
     private toastr: ToastrService,
     private dataService: DataService,
@@ -65,6 +69,11 @@ export class HomeComponent implements OnInit {
         this.requests = this.requests.filter(
           (request) => request.__status__ === 'approved'
         );
+        for (let request of this.requests) {
+          if (new Date(request.requestCompletedAt) < new Date()) {
+            this.gardenCount = this.gardenCount + 1;
+          }
+        }
 
         this.dataService.getAllMaintenances().subscribe((result) => {
           this.maintanences = result['data'];
@@ -207,9 +216,6 @@ export class HomeComponent implements OnInit {
       return;
     }
   }
-
-  workerCount = 0;
-  ownerCount = 0;
 
   availableTimes = [
     { displayValue: '24 sata', actualValue: 1 },
