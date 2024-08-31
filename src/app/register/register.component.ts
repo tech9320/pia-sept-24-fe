@@ -158,7 +158,7 @@ export class RegisterComponent {
                     this.dataService
                       .registerUser(
                         this.username,
-                        this.password,
+                        this.utilsService.hashPassword(this.password),
                         this.name,
                         this.surname,
                         this.gender,

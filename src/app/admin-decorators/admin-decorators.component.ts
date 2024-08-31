@@ -137,7 +137,7 @@ export class AdminDecoratorsComponent implements OnInit {
                     this.dataService
                       .registerWorker(
                         this.username,
-                        this.password,
+                        this.utilsService.hashPassword(this.password),
                         this.name,
                         this.surname,
                         this.gender,

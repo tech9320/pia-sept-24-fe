@@ -31,10 +31,10 @@ export class PasswordChangeComponent {
       return;
     }
 
-    let user_data = JSON.parse(sessionStorage.getItem('user_data')!);
-    let a = this.utils.hashPassword(this.oldPassword);
+    const user_data = JSON.parse(sessionStorage.getItem('user_data')!);
+    const oldPasswordHash = this.utils.hashPassword(this.oldPassword);
 
-    if (user_data['password'] != a) {
+    if (user_data['password'] != oldPasswordHash) {
       this.toastr.error('Niste uneli pravilnu trenutnu lozinku!');
       return;
     }
@@ -44,11 +44,11 @@ export class PasswordChangeComponent {
       return;
     }
 
-    let b = this.utils.hashPassword(this.newPassword);
+    let newPasswordHash = this.utils.hashPassword(this.newPassword);
 
-    let c = this.utils.hashPassword(this.newPasswordRepeat);
+    let newPasswordRepeat = this.utils.hashPassword(this.newPasswordRepeat);
 
-    if (b != c) {
+    if (newPasswordHash != newPasswordRepeat) {
       this.toastr.error('Niste uneli pravilno novu lozinku!');
       return;
     }
@@ -57,7 +57,7 @@ export class PasswordChangeComponent {
       .updateUserPassword(
         sessionStorage.getItem('user_type')!,
         user_data['_id'],
-        b
+        newPasswordHash
       )
       .subscribe((result) => {
         if (result.message == 'ok') {
