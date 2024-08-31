@@ -26,7 +26,6 @@ export class AdminCompanyComponent {
   vacationEnd: Date | undefined = undefined;
 
   companyServicesJSON = {};
-  companyLocationJSON = {};
 
   firstWorkerUsername: string = '';
   firstWorkerPassword: string = '';
@@ -60,7 +59,6 @@ export class AdminCompanyComponent {
       companyAddress: ['', Validators.required],
       companyServices: ['', Validators.required],
       companyNumber: ['', Validators.required],
-      companyLocation: ['', Validators.required],
       vacationStart: ['', Validators.required],
       vacationEnd: ['', Validators.required],
     });
@@ -231,7 +229,6 @@ export class AdminCompanyComponent {
                                         this.companyAddress,
                                         JSON.parse(this.companyServices),
                                         this.companyNumber,
-                                        JSON.parse(this.companyLocation),
                                         vacationStart,
                                         vacationEnd
                                       )
@@ -329,13 +326,6 @@ export class AdminCompanyComponent {
       this.companyServicesJSON = JSON.parse(this.companyServices);
     } catch {
       this.toastr.error('Molim Vas unesite pravilni format za usluge firme!');
-      return false;
-    }
-
-    try {
-      this.companyLocationJSON = JSON.parse(this.companyLocation);
-    } catch {
-      this.toastr.error('Molim Vas unesite pravilni format za lokaciju firme!');
       return false;
     }
 

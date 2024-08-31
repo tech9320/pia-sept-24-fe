@@ -33,12 +33,13 @@
             </div>
             <div class="input-container">
               <p>Nazivi servisa i cene:</p>
-              <input
+              <textarea
                 type="text"
                 formControlName="companyServices"
                 [(ngModel)]="companyServices"
                 placeholder="{'services': [{'Pranje prozora', 120}, ...]}"
-              />
+                rows="3"
+              ></textarea>
             </div>
             <div class="input-container">
               <p>Broj telefona:</p>
@@ -47,15 +48,6 @@
                 formControlName="companyNumber"
                 [(ngModel)]="companyNumber"
                 placeholder="+381 60 213 212 1234"
-              />
-            </div>
-            <div class="input-container">
-              <p>Lokacija na mapi:</p>
-              <input
-                type="text"
-                formControlName="companyLocation"
-                [(ngModel)]="companyLocation"
-                placeholder="'coordinates': {x: 12.2, y: 21.0}"
               />
             </div>
             <div class="date-picker-container">

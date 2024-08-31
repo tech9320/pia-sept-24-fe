@@ -283,7 +283,6 @@ export class DataService {
     address: string,
     services: any,
     contactNumber: string,
-    mapCoordinates: any,
     vacationStart: any,
     vacationEnd: any
   ) {
@@ -292,7 +291,6 @@ export class DataService {
       address,
       services,
       contactNumber,
-      mapCoordinates,
       vacationPeriod: {
         start: vacationStart,
         end: vacationEnd,
