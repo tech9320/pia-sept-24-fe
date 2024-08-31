@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  workerCount = 0;
-  ownerCount = 0;
-  gardenCount = 0;
+  workerCount: number = 0;
+  ownerCount: number = 0;
+  gardenCount: number = 0;
+  contractCount: number = 0;
 
   constructor(
     private toastr: ToastrService,
@@ -69,6 +70,7 @@ export class HomeComponent implements OnInit {
         this.requests = this.requests.filter(
           (request) => request.__status__ === 'approved'
         );
+
         for (let request of this.requests) {
           if (new Date(request.requestCompletedAt) < new Date()) {
             this.gardenCount = this.gardenCount + 1;
@@ -225,8 +227,6 @@ export class HomeComponent implements OnInit {
 
   selectedTime: string = this.availableTimes[0].displayValue;
 
-  contractCount: number = 0;
-
   updateContactCount(event: Event): void {
     const selectedElement = event.target as HTMLSelectElement;
     const selectedDisplayValue = selectedElement.value;
@@ -246,7 +246,7 @@ export class HomeComponent implements OnInit {
     let result = 0;
 
     for (let request of this.requests) {
-      if (new Date(request.requestCompletedA) >= timeBreak) {
+      if (new Date(request.createdAt) >= timeBreak) {
         result++;
       } else {
         break;
