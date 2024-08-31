@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Chart } from 'angular-highcharts';
-import { chart } from 'highcharts';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-statistics',
@@ -19,7 +20,11 @@ export class StatisticsComponent implements OnInit {
   userWorkPerMonth: number[] = new Array(12).fill(0);
   companyWorkerWorks: Map<string, number> = new Map<string, number>();
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   barChart = new Chart({
     chart: { type: 'column' },
@@ -197,6 +202,15 @@ export class StatisticsComponent implements OnInit {
       true,
       true
     );
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
   }
 
   calculateWorksPerDay() {

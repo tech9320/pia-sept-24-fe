@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-worker-maintenance',
@@ -21,7 +22,11 @@ export class WorkerMaintenanceComponent implements OnInit {
 
   userData = JSON.parse(sessionStorage.getItem('user_data')!);
 
-  constructor(private dataService: DataService, private toast: ToastrService) {}
+  constructor(
+    private dataService: DataService,
+    private toast: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getData();
@@ -89,6 +94,15 @@ export class WorkerMaintenanceComponent implements OnInit {
     }
 
     return request.fountainArea;
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toast.success('Uspešno ste se odjavili');
   }
 
   updateMaintenance(dateRef: any, mintanence: any, __status__: string) {

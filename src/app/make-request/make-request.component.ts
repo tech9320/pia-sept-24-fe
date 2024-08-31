@@ -115,6 +115,15 @@ export class MakeRequestComponent {
     }
   }
 
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toast.success('Uspešno ste se odjavili');
+  }
+
   sendRequest() {
     if (this.selectedServices.length === 0) {
       this.toast.error('Morate izaberiti bar jednu uslugu!');

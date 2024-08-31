@@ -3,7 +3,6 @@ import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
 import { UtilsService } from '../utils.service';
 import { Router } from '@angular/router';
-import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -114,6 +113,15 @@ export class ProfileComponent implements OnInit {
         img.src = e.target?.result as string;
       };
     }
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
   }
 
   updateUser() {

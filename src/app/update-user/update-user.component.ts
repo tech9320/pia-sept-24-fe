@@ -117,6 +117,15 @@ export class UpdateUserComponent implements OnInit {
     }
   }
 
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
+  }
+
   updateUser() {
     let userType: string = '';
 

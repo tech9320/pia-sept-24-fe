@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-worker-requests',
@@ -18,7 +19,8 @@ export class WorkerRequestsComponent {
 
   constructor(
     private dataService: DataService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -66,6 +68,15 @@ export class WorkerRequestsComponent {
           console.error(result['message']);
         }
       });
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
   }
 
   loadRequest() {

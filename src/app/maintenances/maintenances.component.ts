@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { DataService } from '../data.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-maintenances',
@@ -19,7 +20,11 @@ export class MaintenancesComponent {
 
   userData = JSON.parse(sessionStorage.getItem('user_data')!);
 
-  constructor(private dataService: DataService, private toast: ToastrService) {}
+  constructor(
+    private dataService: DataService,
+    private toast: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getData();
@@ -131,6 +136,15 @@ export class MaintenancesComponent {
     const sixMonthsPassed = new Date(past.setMonth(past.getMonth() + 6));
 
     return new Date() > sixMonthsPassed;
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toast.success('Uspešno ste se odjavili');
   }
 
   requestMaintenance(request: any) {

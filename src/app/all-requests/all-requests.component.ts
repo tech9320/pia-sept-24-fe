@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-all-requests',
@@ -16,7 +17,11 @@ export class AllRequestsComponent implements OnInit {
 
   userData = JSON.parse(sessionStorage.getItem('user_data')!);
 
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.dataService.getAllCompanies().subscribe((result) => {
@@ -68,6 +73,15 @@ export class AllRequestsComponent implements OnInit {
         });
       });
     });
+  }
+
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
   }
 
   getWorks(request: any) {

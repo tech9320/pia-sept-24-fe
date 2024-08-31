@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,8 @@ import { DataService } from '../data.service';
 export class HomeComponent implements OnInit {
   constructor(
     private toastr: ToastrService,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) {}
 
   isUser: boolean = true;

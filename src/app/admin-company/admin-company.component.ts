@@ -133,6 +133,15 @@ export class AdminCompanyComponent {
     }
   }
 
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
+  }
+
   saveCompany() {
     if (!this.checkCompanyInfo() || !this.checkWorkerInfoBasic()) {
       return;

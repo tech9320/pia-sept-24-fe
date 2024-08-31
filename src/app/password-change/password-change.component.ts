@@ -21,6 +21,15 @@ export class PasswordChangeComponent {
   newPassword: string = '';
   newPasswordRepeat: string = '';
 
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
+  }
+
   changePassword() {
     if (
       this.oldPassword.length == 0 ||

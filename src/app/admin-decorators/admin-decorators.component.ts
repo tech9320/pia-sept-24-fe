@@ -82,6 +82,15 @@ export class AdminDecoratorsComponent implements OnInit {
     }
   }
 
+  logoutUser() {
+    sessionStorage.removeItem('user_type');
+    sessionStorage.removeItem('user_data');
+
+    this.router.navigate(['/']);
+
+    this.toastr.success('Uspešno ste se odjavili');
+  }
+
   registerWorker() {
     if (
       this.username.length == 0 ||
