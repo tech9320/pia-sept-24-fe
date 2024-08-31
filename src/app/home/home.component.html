@@ -100,20 +100,14 @@
         <table>
           <thead>
             <tr>
-              <th>Ime</th>
-              <th>Adresa</th>
-              <th>Broj telefona</th>
-              <th>Email adresa</th>
-              <th>Kompanija</th>
+              <th style="text-align: center">Ime</th>
+              <th style="text-align: center">Prezime</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let worker of fullWorkerData">
-              <td>{{ worker.name }}</td>
-              <td>{{ worker.surname }}</td>
-              <td>{{ worker.contactNumber }}</td>
-              <td>{{ worker.email }}</td>
-              <td>{{ worker.company.name }}</td>
+              <td style="text-align: center">{{ worker.name }}</td>
+              <td style="text-align: center">{{ worker.surname }}</td>
             </tr>
           </tbody>
         </table>
