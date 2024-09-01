@@ -53,32 +53,22 @@
             <div class="date-picker-container">
               <input
                 matInput
-                [matDatepicker]="vacationStartPicker"
+                type="datetime-local"
                 touchUi="true"
                 formControlName="vacationStart"
                 placeholder="MM/DD/YYYY (početak)"
                 [min]="today"
               />
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="vacationStartPicker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #vacationStartPicker></mat-datepicker>
             </div>
             <div class="date-picker-container">
               <input
                 matInput
-                [matDatepicker]="vacationEndPicker"
                 touchUi="true"
+                type="datetime-local"
                 formControlName="vacationEnd"
                 placeholder="MM/DD/YYYY (kraj)"
                 [min]="today"
               />
-              <mat-datepicker-toggle
-                matIconSuffix
-                [for]="vacationEndPicker"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #vacationEndPicker></mat-datepicker>
             </div>
           </div>
           <div>

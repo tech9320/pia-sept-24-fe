@@ -34,6 +34,10 @@ import { WorkerMaintenanceComponent } from './worker-maintenance/worker-maintena
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ChartModule } from 'angular-highcharts';
 import { AdminCompanyComponent } from './admin-company/admin-company.component';
+import {
+  NgxMatDatetimePickerModule,
+  NgxMatTimepickerModule,
+} from '@angular-material-components/datetime-picker';
 
 @NgModule({
   declarations: [
@@ -78,6 +82,8 @@ import { AdminCompanyComponent } from './admin-company/admin-company.component';
     MatNativeDateModule,
     MatRadioModule,
     ChartModule,
+    NgxMatTimepickerModule,
+    NgxMatDatetimePickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

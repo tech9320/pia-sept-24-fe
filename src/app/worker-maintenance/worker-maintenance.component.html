@@ -28,17 +28,12 @@
                 <input
                   #dateRef
                   matInput
-                  [matDatepicker]="picker"
+                  type="datetime-local"
                   touchUi="true"
                   formControlName="date"
                   placeholder="MM/DD/YYYY"
                   [min]="today"
                 />
-                <mat-datepicker-toggle
-                  matIconSuffix
-                  [for]="picker"
-                ></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
               </div>
             </td>
             <td
