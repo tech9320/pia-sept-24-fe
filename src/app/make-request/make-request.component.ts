@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { isValidPrivateArea, isValidRestaurantArea } from '../validators';
 
 @Component({
   selector: 'app-make-request',
@@ -40,16 +41,26 @@ export class MakeRequestComponent {
       gardenArea: ['', Validators.required],
       gardenType: ['', Validators.required],
     });
-    this.privateFormGroup = this._formBuilder.group({
-      poolArea: ['', Validators.required],
-      greenArea: ['', Validators.required],
-      furnitureArea: ['', Validators.required],
-    });
-    this.restaurantFormGroup = this._formBuilder.group({
-      fountainArea: ['', Validators.required],
-      greenArea: ['', Validators.required],
-      furnitureNumber: ['', Validators.required],
-    });
+    this.privateFormGroup = this._formBuilder.group(
+      {
+        poolArea: ['', Validators.required],
+        greenArea: ['', Validators.required],
+        furnitureArea: ['', Validators.required],
+      },
+      {
+        validators: isValidPrivateArea(this.initialFormGroup),
+      }
+    );
+    this.restaurantFormGroup = this._formBuilder.group(
+      {
+        fountainArea: ['', Validators.required],
+        greenArea: ['', Validators.required],
+        furnitureNumber: ['', Validators.required],
+      },
+      {
+        validators: isValidRestaurantArea(this.initialFormGroup),
+      }
+    );
   }
 
   isPrivateGarden() {
