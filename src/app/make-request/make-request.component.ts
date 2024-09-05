@@ -118,11 +118,67 @@ export class MakeRequestComponent {
     }
   }
 
-  clearGardenMap() {
+  onMapUpload(event: Event) {
+    const input = event.target as HTMLInputElement;
+
+    if (!input.files || input.files.length === 0) {
+      return;
+    }
+
+    const file = input.files[0];
+
+    if (file.type !== 'application/json') {
+      alert('Please upload a valid JSON file.');
+      return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      try {
+        const data = JSON.parse(reader.result as string);
+        this.gardenMapJSON = data;
+
+        const objects = data.objects;
+
+        this.canvas = document.getElementById('gardenMap') as HTMLCanvasElement;
+
+        if (this.canvas) {
+          this.ctx = this.canvas.getContext('2d');
+
+          if (this.ctx) {
+            for (let i = 0; i < objects.length; i++) {
+              const object = objects[i];
+
+              if (object.type === 'rect') {
+                this.ctx.fillStyle = object.bgColor;
+                this.ctx.fillRect(object.px, object.py, object.w, object.h);
+              } else {
+                this.ctx.beginPath();
+                this.ctx.arc(object.x, object.y, object.radius, 0, 2 * Math.PI);
+                this.ctx.fillStyle = object.bgColor;
+                this.ctx.fill();
+              }
+            }
+          }
+        }
+
+        this.isMapLoaded = true;
+      } catch (e) {
+        console.error(e);
+        this.toast.error('Unesite ispravan format mape bašte! (JSON)');
+      }
+    };
+
+    reader.readAsText(file);
+  }
+
+  clearGardenMap(mapInput: HTMLInputElement) {
     if (this.canvas && this.ctx) {
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
       this.gardenMapJSON = '';
       this.isMapLoaded = false;
+      mapInput.value = '';
     }
   }
 

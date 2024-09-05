@@ -23,6 +23,7 @@
                 formControlName="date"
                 placeholder="MM/DD/YYYY"
                 [min]="today"
+                style="margin-bottom: 12px"
               />
             </div>
             <div class="input-container">
@@ -158,10 +159,17 @@
       <mat-step>
         <ng-template matStepLabel>Mapa bašte</ng-template>
         <div class="form-container" id="map-container">
-          <textarea id="map-input" [(ngModel)]="gardenMapJSON"></textarea>
+          <input
+            type="file"
+            (change)="onMapUpload($event)"
+            accept=".json"
+            placeholder="Izaberi mapu"
+            #mapInput
+          />
           <div class="buttons">
-            <div class="button" (click)="loadGardenMap()">Učitaj mapu</div>
-            <div class="button" (click)="clearGardenMap()">Očisti mapu</div>
+            <div class="button" (click)="clearGardenMap(mapInput)">
+              Očisti mapu
+            </div>
           </div>
           <canvas id="gardenMap"></canvas>
           <div class="stepper-buttons">
