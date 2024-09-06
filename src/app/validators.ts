@@ -1,5 +1,22 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
+export function isValidDate(companyData: any): ValidatorFn {
+  return (group: AbstractControl): ValidationErrors | null => {
+    const date = new Date(group.get('date')?.value);
+
+    const vacationStart = new Date(companyData.vacationPeriod.start);
+    const vacationEnd = new Date(companyData.vacationPeriod.end);
+
+    date.setFullYear(vacationStart.getFullYear());
+
+    if (date >= vacationStart && date <= vacationEnd) {
+      return { dateInvalid: true };
+    }
+
+    return null;
+  };
+}
+
 export function isValidPrivateArea(gardenAreaForm: any): ValidatorFn {
   return (group: AbstractControl): ValidationErrors | null => {
     const poolArea = group.get('poolArea')?.value;

@@ -3,7 +3,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
-import { isValidPrivateArea, isValidRestaurantArea } from '../validators';
+import {
+  isValidPrivateArea,
+  isValidRestaurantArea,
+  isValidDate,
+} from '../validators';
+import { MatStepper } from '@angular/material/stepper';
 
 @Component({
   selector: 'app-make-request',
@@ -37,11 +42,16 @@ export class MakeRequestComponent {
     private dataService: DataService,
     private router: Router
   ) {
-    this.initialFormGroup = this._formBuilder.group({
-      date: ['', Validators.required],
-      gardenArea: ['', Validators.required],
-      gardenType: ['', Validators.required],
-    });
+    this.initialFormGroup = this._formBuilder.group(
+      {
+        date: ['', Validators.required],
+        gardenArea: ['', Validators.required],
+        gardenType: ['', Validators.required],
+      },
+      {
+        validators: isValidDate(this.companyData),
+      }
+    );
     this.privateFormGroup = this._formBuilder.group(
       {
         poolArea: ['', Validators.required],
@@ -62,6 +72,22 @@ export class MakeRequestComponent {
         validators: isValidRestaurantArea(this.initialFormGroup),
       }
     );
+
+    this.initialFormGroup.get('date')?.valueChanges.subscribe(() => {
+      let date = new Date(this.initialFormGroup.get('date')?.value);
+
+      const vacationStart = new Date(this.companyData.vacationPeriod.start);
+      const vacationEnd = new Date(this.companyData.vacationPeriod.end);
+
+      date.setFullYear(vacationStart.getFullYear());
+
+      if (date >= vacationStart && date <= vacationEnd) {
+        this.toast.error(
+          'Firma ne može realizovati radove za izabrani dan jer je na odmoru!'
+        );
+        return;
+      }
+    });
   }
 
   isPrivateGarden() {
@@ -190,6 +216,29 @@ export class MakeRequestComponent {
     this.router.navigate(['/']);
 
     this.toast.success('Uspešno ste se odjavili');
+  }
+
+  checkAreaPrivate() {
+    const poolArea = this.privateFormGroup.get('poolArea')?.value;
+    const greenArea = this.privateFormGroup.get('greenArea')?.value;
+    const furnitureArea = this.privateFormGroup.get('furnitureArea')?.value;
+
+    const gardenArea = this.initialFormGroup.get('gardenArea')?.value;
+
+    if (gardenArea != poolArea + greenArea + furnitureArea) {
+      this.toast.error('Kvadrature bašte se ne poklapaju!');
+    }
+  }
+
+  checkAreaRestaurant() {
+    const fountainArea = this.restaurantFormGroup.get('fountainArea')?.value;
+    const greenArea = this.restaurantFormGroup.get('greenArea')?.value;
+
+    const gardenArea = this.initialFormGroup.get('gardenArea')?.value;
+
+    if (gardenArea != fountainArea + greenArea) {
+      this.toast.error('Kvadrature bašte se ne poklapaju!');
+    }
   }
 
   sendRequest() {

@@ -92,7 +92,12 @@
             <button mat-button matStepperPrevious id="stepper-button">
               Nazad
             </button>
-            <button mat-button matStepperNext id="stepper-button">
+            <button
+              mat-button
+              matStepperNext
+              id="stepper-button"
+              (click)="checkAreaPrivate()"
+            >
               Sledeće
             </button>
           </div>
@@ -150,7 +155,12 @@
             <button mat-button matStepperPrevious id="stepper-button">
               Nazad
             </button>
-            <button mat-button matStepperNext id="stepper-button">
+            <button
+              mat-button
+              matStepperNext
+              id="stepper-button"
+              (click)="checkAreaRestaurant()"
+            >
               Sledeće
             </button>
           </div>
