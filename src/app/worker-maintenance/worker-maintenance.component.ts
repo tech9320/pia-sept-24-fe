@@ -9,7 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./worker-maintenance.component.css'],
 })
 export class WorkerMaintenanceComponent implements OnInit {
-  today = new Date();
+  nextDate = new Date().setDate(new Date().getDate() + 1);
+  minDate = new Date(this.nextDate).toISOString().slice(0, 16);
 
   requests: any[] = [];
   companies: any[] = [];

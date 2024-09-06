@@ -11,7 +11,8 @@ import { isValidPrivateArea, isValidRestaurantArea } from '../validators';
   styleUrls: ['./make-request.component.css'],
 })
 export class MakeRequestComponent {
-  today = new Date();
+  nextDate = new Date().setDate(new Date().getDate() + 1);
+  minDate = new Date(this.nextDate).toISOString().slice(0, 16);
 
   initialFormGroup: FormGroup = new FormGroup({});
   privateFormGroup: FormGroup = new FormGroup({});
@@ -61,6 +62,8 @@ export class MakeRequestComponent {
         validators: isValidRestaurantArea(this.initialFormGroup),
       }
     );
+
+    console.log(this.minDate);
   }
 
   isPrivateGarden() {
