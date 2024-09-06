@@ -62,8 +62,6 @@ export class MakeRequestComponent {
         validators: isValidRestaurantArea(this.initialFormGroup),
       }
     );
-
-    console.log(this.minDate);
   }
 
   isPrivateGarden() {
