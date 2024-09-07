@@ -93,9 +93,13 @@ export class WorkerRequestsComponent {
             (request) => request.__status__ === 'waiting'
           );
 
+          this.requests = this.requests.filter(
+            (request) => request.companyId === this.workerData.company
+          );
+
           this.requests = this.requests.sort(
             (a, b) =>
-              new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+              new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
           );
 
           this.displayedRequests = this.requests.map((request) => {

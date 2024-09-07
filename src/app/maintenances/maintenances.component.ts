@@ -102,6 +102,16 @@ export class MaintenancesComponent {
             return maintanence;
           });
 
+          let smth: string[] = [];
+
+          for (let temp of this.maintanences) {
+            if (temp.requestId) {
+              smth.push(temp.requestId._id);
+            }
+          }
+
+          console.log(smth);
+
           this.awaitingMintanences = this.maintanences.filter(
             (maintanence) =>
               maintanence.requestId.ownerId === this.userData['_id'] &&
